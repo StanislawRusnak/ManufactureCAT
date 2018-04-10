@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fillHeight="false" prefHeight="59.0" prefWidth="600.0"
+	spacing="5.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.ControlPaneController">
+	<children>
+		<Button fx:id="loadShortMenuItem" maxHeight="1.7976931348623157E308"
+			mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="Wczytaj"
+			HBox.hgrow="NEVER" />
+		<Button fx:id="saveShortMenuItem" layoutX="10.0" layoutY="10.0"
+			maxHeight="1.7976931348623157E308" mnemonicParsing="false"
+			prefHeight="45.0" prefWidth="45.0" text="Zapisz" />
+		<Button fx:id="printShortMenuItem" layoutX="60.0" layoutY="10.0"
+			maxHeight="1.7976931348623157E308" mnemonicParsing="false"
+			prefHeight="45.0" prefWidth="45.0" text="Drukuj" />
+		<Button fx:id="latheShortMenuItem" layoutX="111.0" layoutY="10.0"
+			maxHeight="1.7976931348623157E308" mnemonicParsing="false"
+			prefHeight="45.0" prefWidth="45.0" text="Toczenie" />
+		<Button fx:id="drillShortMenuItem" layoutX="161.0" layoutY="10.0"
+			maxHeight="1.7976931348623157E308" mnemonicParsing="false"
+			prefHeight="45.0" prefWidth="45.0" text="Wiercenie" />
+		<Button fx:id="cutShortMenuItem" layoutX="161.0" layoutY="10.0"
+			maxHeight="1.7976931348623157E308" mnemonicParsing="false"
+			prefHeight="45.0" prefWidth="45.0" text="Cięcie" />
+		<Button fx:id="otherShortMenuItem" layoutX="262.0" layoutY="10.0"
+			maxHeight="1.7976931348623157E308" mnemonicParsing="false"
+			prefHeight="45.0" prefWidth="45.0" text="Inny" />
+	</children>
+	<padding>
+		<Insets bottom="5.0" left="5.0" top="5.0" />
+	</padding>
+</HBox>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity"
+	xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.MenuPaneController">
+	<children>
+		<VBox>
+			<children>
+				<MenuBar>
+					<menus>
+						<Menu fx:id="productMenu" mnemonicParsing="false" text="Produkt">
+							<items>
+								<MenuItem fx:id="newMenuItem" mnemonicParsing="false"
+									text="Nowy" />
+								<MenuItem fx:id="saveMenuItem" mnemonicParsing="false"
+									text="Zapisz" />
+								<MenuItem fx:id="loadMenuItem" mnemonicParsing="false"
+									text="Wczytaj" />
+								<MenuItem fx:id="printMenuItem" mnemonicParsing="false"
+									text="Drukuj" />
+								<MenuItem fx:id="closeMenuItem" mnemonicParsing="false"
+									text="Zamknij" />
+							</items>
+						</Menu>
+						<Menu fx:id="procedureMenu" mnemonicParsing="false" text="Zabieg">
+							<items>
+								<MenuItem fx:id="latheMenuItem" mnemonicParsing="false"
+									text="Toczenie" />
+								<MenuItem fx:id="drillMenuitem" mnemonicParsing="false"
+									text="Wiercenie" />
+								<MenuItem fx:id="cutMenuItem" mnemonicParsing="false"
+									text="Cięcie" />
+								<MenuItem fx:id="otherMenuItem" mnemonicParsing="false"
+									text="Inny zabieg" />
+							</items>
+						</Menu>
+						<Menu fx:id="optionMenu" mnemonicParsing="false" text="Opcje">
+							<items>
+								<MenuItem fx:id="settingsMenuItem" mnemonicParsing="false"
+									text="Ustawienia aplikacji" />
+								<MenuItem fx:id="avaibleMenuItem" mnemonicParsing="false"
+									text="Dostępne obrabiarki" />
+								<MenuItem fx:id="editSemiMenuItem" mnemonicParsing="false"
+									text="Edytuj półfabrykat" />
+							</items>
+						</Menu>
+						<Menu fx:id="helpMenu" mnemonicParsing="false" text="Pomoc">
+							<items>
+								<MenuItem fx:id="aboutMenuItem" mnemonicParsing="false"
+									text="Informacje o programie" />
+							</items>
+						</Menu>
+					</menus>
+				</MenuBar>
+			</children>
+		</VBox>
+	</children>
+</AnchorPane>
