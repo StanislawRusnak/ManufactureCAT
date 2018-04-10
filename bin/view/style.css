@@ -1,0 +1,14 @@
+#loadButton{
+	-fx-background-image:url("../res/loadButton.png"); 
+	-fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+	-fx-background-size: 70% 70%;
+	-fx-background-color: transparent;
+    -fx-opacity: 40%;
+}
+#loadButton:hover {
+    -fx-opacity: 60%;
+}
+#loadButton:pressed {
+    -fx-opacity: 100%;
+}
