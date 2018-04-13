@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 public class Procedure {
 	//=====pola g³ówne wykorzystywane w tabeli TableView
-	private StringProperty type; 	//typ zabiegu (np toczenie)
+	private StringProperty type; 	//typ zabiegu (np toczenie zgrubne)
 	private StringProperty parameters;  //parametry zabiegu
 	private StringProperty machine;  //rodzaj obrabiarki
 	private DoubleProperty time;		//czas trwania zabiegu
