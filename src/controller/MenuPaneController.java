@@ -12,10 +12,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 public class MenuPaneController implements Initializable {
+	@FXML
+	private ControlPaneController controlPaneController;
+	@FXML
+	private MenuPaneController menuPaneController;
+	@FXML
+	private LatheAddPaneController latheAddPaneController;
     @FXML
     private Menu productMenu;
 
@@ -40,7 +47,10 @@ public class MenuPaneController implements Initializable {
     @FXML
     private MenuItem latheMenuItem;
 
-    @FXML
+	public MenuItem getLatheMenuItem() {
+		return latheMenuItem;
+	}
+	@FXML
     private MenuItem drillMenuitem;
 
     @FXML
@@ -67,14 +77,14 @@ public class MenuPaneController implements Initializable {
     @FXML
     private MenuItem aboutMenuItem;
 	@Override
+	
 	public void initialize(URL location, ResourceBundle resources) {
 		configureMenu();
+
 	}
 	
-	
 	private void configureMenu() {
-        closeMenuItem.setOnAction(x -> Platform.exit());
- 
+		closeMenuItem.setOnAction(x -> Platform.exit());
         aboutMenuItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
@@ -91,5 +101,10 @@ public class MenuPaneController implements Initializable {
                 stage.show();
             }
         });
+		MenuItem latheMenuItem = menuPaneController.getLatheMenuItem();
+		Button latheShort = controlPaneController.getLatheShortMenuItem();
+		latheMenuItem.setOnAction(x->latheAddPaneController.createLatheWindow());
+		latheShort.setOnAction(x->latheAddPaneController.createLatheWindow()); 
     }
+
 }

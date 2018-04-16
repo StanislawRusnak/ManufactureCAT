@@ -15,8 +15,8 @@ public class ContentPaneController implements Initializable {
    public static final String TYPE_COLUMN = "Typ zabiegu";
    public static final String PARAMETERS_COLUMN = "Parametry";
    public static final String MACHINE_COLUMN = "Obrabiarka";
-   public static final String TIME_COLUMN = "Czas";
-   public static final String COST_COLUMN = "Koszt";
+   public static final String TIME_COLUMN = "Czas [min]";
+   public static final String COST_COLUMN = "Koszt [z³]";
 	
     @FXML
     private TableView<Procedure> contentTable;
@@ -47,6 +47,12 @@ public class ContentPaneController implements Initializable {
         getContentTable().getColumns().add(machineColumn);
         getContentTable().getColumns().add(timeColumn);
         getContentTable().getColumns().add(costColumn);
+        typeColumn.setSortable(false);
+        parametersColumn.setSortable(false);
+        machineColumn.setSortable(false);
+        timeColumn.setSortable(false);
+        costColumn.setSortable(false);
+        parametersColumn.setMinWidth(100);
 
     }
 

@@ -67,6 +67,9 @@ public class Procedure {
     }
  
     public void setTime(Double time) {
+    	time*=100;
+    	time = (double) Math.round(time);
+    	time/=100;
         this.time.setValue(time);
     }
  
@@ -79,6 +82,9 @@ public class Procedure {
     }
  
     public void setCost(Double cost) {
+    	cost*=100;
+    	cost= (double) Math.round(cost);
+    	cost/=100;
         this.cost.setValue(cost);
     }
  

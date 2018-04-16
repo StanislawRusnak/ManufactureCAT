@@ -1,14 +1,18 @@
 package controller;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.Button;
 
-public class ControlPaneController implements Initializable{
 
+public class ControlPaneController implements Initializable {
+	@FXML
+	private MenuPaneController menuPaneController;
 	@FXML
 	private Button loadShortMenuItem;
 
@@ -21,6 +25,10 @@ public class ControlPaneController implements Initializable{
 	@FXML
 	private Button latheShortMenuItem;
 
+	public Button getLatheShortMenuItem() {
+		return latheShortMenuItem;
+	}
+
 	@FXML
 	private Button drillShortMenuItem;
 
@@ -32,8 +40,5 @@ public class ControlPaneController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
 	}
-
 }
