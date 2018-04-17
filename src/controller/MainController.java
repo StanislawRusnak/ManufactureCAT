@@ -1,18 +1,12 @@
 package controller;
 
-
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
-
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
-
 import procedure.Lathe;
 import procedure.Procedure;
 import procedure.ProcedureCollection;

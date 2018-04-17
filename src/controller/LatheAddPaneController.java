@@ -9,17 +9,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
+import javafx.stage.Stage;
+import main.Main;
 import procedure.Lathe;
+import procedure.Procedure;
 import javafx.fxml.Initializable;
 
 public class LatheAddPaneController  implements Initializable  {
 	@FXML
-	private MainController main; //null!
+	private ContentPaneController contentPaneController;
 	@FXML
-	private ContentPaneController contentPaneController; // null!
-	@FXML
-	private MenuPaneController menuPaneController;  //null!
+	private MenuPaneController menuPaneController; 
 	@FXML
 	private ComboBox<String> latheType;
 
@@ -62,8 +62,7 @@ public class LatheAddPaneController  implements Initializable  {
 		latheAdd.setOnAction(x->configureLatheAdd());
 	}
 	public void configureLatheAdd() {
-		System.out.println("Dodajê procedure do listy");
-		/*Procedure lathe = new Lathe(
+		Procedure lathe = new Lathe(
 				Double.parseDouble(diameterBeforeLathe.getText()),
 				Double.parseDouble(diameterAfterLathe.getText()),
 				Double.parseDouble(latheLength.getText()),
@@ -72,15 +71,11 @@ public class LatheAddPaneController  implements Initializable  {
 				Double.parseDouble(latheIdlePath.getText()),
 				Double.parseDouble(latheRpm.getText()),
 				Double.parseDouble(latheCost.getText()),
-				latheType.getAccessibleText(),
+				latheType.getValue(),
 				latheMachine.getText()
-				); */
-		
-		main.collection.addProcedure(new Lathe(55,40.5,250,3,3,8,1200,20,"Toczenie wewnêtrzne proba3","tokarka3"));
-	}
-
-	public void init(MainController mainController) {
-		main = mainController;
-		
+				); 
+		Main.mainController.collection.addProcedure(lathe);
+		Stage stage = (Stage) latheFeed.getScene().getWindow();
+		stage.close();	
 	}
 }
