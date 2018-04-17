@@ -12,17 +12,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+
 public class MenuPaneController implements Initializable {
+	@FXML
+	private MainController main;
 	@FXML
 	private ControlPaneController controlPaneController;
 	@FXML
 	private MenuPaneController menuPaneController;
-	@FXML
-	private LatheAddPaneController latheAddPaneController;
     @FXML
     private Menu productMenu;
 
@@ -80,7 +81,6 @@ public class MenuPaneController implements Initializable {
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		configureMenu();
-
 	}
 	
 	private void configureMenu() {
@@ -101,10 +101,23 @@ public class MenuPaneController implements Initializable {
                 stage.show();
             }
         });
-		MenuItem latheMenuItem = menuPaneController.getLatheMenuItem();
-		Button latheShort = controlPaneController.getLatheShortMenuItem();
-		latheMenuItem.setOnAction(x->latheAddPaneController.createLatheWindow());
-		latheShort.setOnAction(x->latheAddPaneController.createLatheWindow()); 
     }
+	public void init(MainController mainController) {
+		main = mainController;
+		
+	}
+	public void createLatheWindow() {
+		Parent parent = null;
+        try {
+            parent = FXMLLoader.load(getClass().getResource("/view/LatheAddPane.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(parent,700,600);
+        Stage stage = new Stage();
+        stage.setTitle("Dodawanie zabiegu toczenia");
+        stage.setScene(scene);
+        stage.show();
+	}
 
 }

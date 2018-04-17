@@ -17,7 +17,8 @@ public class ContentPaneController implements Initializable {
    public static final String MACHINE_COLUMN = "Obrabiarka";
    public static final String TIME_COLUMN = "Czas [min]";
    public static final String COST_COLUMN = "Koszt [z³]";
-	
+	@FXML
+	private MainController main;
     @FXML
     private TableView<Procedure> contentTable;
 	public TableView<Procedure> getContentTable() {
@@ -55,5 +56,10 @@ public class ContentPaneController implements Initializable {
         parametersColumn.setMinWidth(100);
 
     }
+
+	public void init(MainController mainController) {
+		main = mainController;
+		
+	}
 
 }

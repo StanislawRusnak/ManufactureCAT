@@ -1,6 +1,7 @@
 package controller;
 
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -10,9 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 
+
 public class ControlPaneController implements Initializable {
 	@FXML
-	private MenuPaneController menuPaneController;
+	private MainController main;
 	@FXML
 	private Button loadShortMenuItem;
 
@@ -39,6 +41,11 @@ public class ControlPaneController implements Initializable {
 	private Button otherShortMenuItem;
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) { 
+	}
+
+	public void init(MainController mainController) {
+		main = mainController;
+		
 	}
 }
