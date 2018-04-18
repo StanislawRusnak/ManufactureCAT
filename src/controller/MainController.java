@@ -35,11 +35,14 @@ public class MainController implements Initializable {
 
 	public void configureTable() {
 		TableView<Procedure> contentTable = contentPaneController.getContentTable();
-		//ProcedureCollection collection = new ProcedureCollection();
 		Procedure lathe1 = new Lathe(50,30.5,200,4,2,6,1000,20,"Toczenie zewnêtrzne","tokarka1");
-		Procedure lathe2 = new Lathe(55,40.5,250,3,3,8,1200,20,"Toczenie wewnêtrzne","tokarka2");
+		Procedure l2 = new Lathe(50,30.5,200,4,2,6,1000,20,"Toczenie zewnêtrzne","tokarka1");
+		Procedure l3 = new Lathe(50,30.5,200,4,2,6,1000,20,"Toczenie zewnêtrzne","tokarka1");
+		Procedure l4 = new Lathe(50,30.5,200,4,2,6,1000,20,"Toczenie zewnêtrzne","tokarka1");
 		collection.addProcedure(lathe1);
-		collection.addProcedure(lathe2);
+		collection.addProcedure(l2);
+		collection.addProcedure(l3);
+		collection.addProcedure(l4);
 		contentTable.setItems(collection.getProcedureList());
 	}
 	

@@ -17,12 +17,12 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/MainPane.fxml"));
-			//Parent parent = FXMLLoader.load(getClass().getResource("/view/MainPane.fxml"));
 			mainLayout = loader.load();
 			mainController = loader.getController();
 			Scene scene = new Scene(mainLayout);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(appName);
+			//primaryStage.setResizable(false);
 			primaryStage.show();
 			
 		}catch(Exception e) {
