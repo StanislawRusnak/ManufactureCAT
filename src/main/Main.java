@@ -22,6 +22,7 @@ public class Main extends Application {
 			Scene scene = new Scene(mainLayout);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(appName);
+			primaryStage.centerOnScreen();
 			//primaryStage.setResizable(false);
 			primaryStage.show();
 			

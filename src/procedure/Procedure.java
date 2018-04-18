@@ -13,6 +13,7 @@ public class Procedure {
 	private DoubleProperty time;		//czas trwania zabiegu
 	private DoubleProperty cost;		//koszt wykonania zabiegu
 	
+	
 	//=====pola pomocnicze konieczne do obliczenia wartoœci pól g³ownych
 	private double preparingTime;		//czas przygotowawczo zakoñczeniowy + czas uzupe³niajacy
 	private double additionalTime;		//czas pomocniczy (np. dosuniêcie narzêdzia, wymiana narz itp)
