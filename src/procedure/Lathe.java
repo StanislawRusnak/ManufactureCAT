@@ -11,7 +11,8 @@ public class Lathe extends Procedure {
 	private double costPerHour = 2; // koszt godziny wykonywania zabiegu (zl)
 
 	public Lathe(double diameterBefore, double diameterAfter, double latheLength, double feed,
-			double depthOfCut, double idleTrack, double rpm, double costPerHour,String type, String machine) {
+			double depthOfCut, double idleTrack, double rpm, double costPerHour,String type,
+			String machine,double preparingTime, double additionalTime) {
 		this.diameterBefore = diameterBefore;
 		this.diameterAfter = diameterAfter;
 		this.latheLength = latheLength;
@@ -20,11 +21,13 @@ public class Lathe extends Procedure {
 		this.idleTrack = idleTrack;
 		this.rpm = rpm;
 		this.costPerHour = costPerHour;
+		setPreparingTime(preparingTime);
+		setAdditionalTime(additionalTime);
 
 		setType(type);
 		setParameters(toString());
 		setMachine(machine);
-		setTime(timeOfLathe());
+		setTime(timeOfLathe()+getPreparingTime()+getAdditionalTime());
 		setCost(costOfLathe());
 	}
 	
@@ -48,6 +51,8 @@ public class Lathe extends Procedure {
 				"\nDroga ja³owa: " + idleTrack +" [mm]"+
 				"\nPosuw: " + feed + " [mm/obr]"+ 
 				"\nG³ebokoœæ skrawania: " + depthOfCut +" [mm]"+
-				"\nPrêdkoœæ obr. wrzeciona: "+ rpm +" [obr/min]";
+				"\nPrêdkoœæ obr. wrzeciona: "+ rpm +" [obr/min]"+
+				"\nCzas przygot-zak: "+ getPreparingTime() +" [min]"+
+				"\nCzas pomocniczy: "+ getAdditionalTime() +" [min]";
 	}
 }

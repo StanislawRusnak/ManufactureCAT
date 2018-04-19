@@ -18,6 +18,7 @@ import procedure.ProcedureCollection;
 public class MainController implements Initializable {
 
 	ProcedureCollection collection = new ProcedureCollection();
+	public Integer partQ;
 	@FXML
 	private ContentPaneController contentPaneController;
 	@FXML
@@ -25,14 +26,15 @@ public class MainController implements Initializable {
 	@FXML
 	private ControlPaneController controlPaneController;
 	@FXML
-	private LatheAddPaneController latheAddPaneController;
-	@FXML
 	private TextField timeSumField;
 	@FXML
 	private TextField costSumField;
 	@FXML
-	private TextArea processInfo;
-
+	private TextField seriesCostField;
+	@FXML
+	private TextArea processInfoField;
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		menuPaneController.init(this);
@@ -42,10 +44,10 @@ public class MainController implements Initializable {
 		configureMenu();
 		configureSumInfo();
 	}
-
+	
 	public void configureTable() {
 		TableView<Procedure> contentTable = contentPaneController.getContentTable();
-		Procedure lathe1 = new Lathe(50, 30.5, 200, 4, 2, 6, 1000, 20, "Toczenie zewnêtrzne", "tokarka1");
+		Procedure lathe1 = new Lathe(50, 30.5, 200, 4, 2, 6, 1000, 20, "Toczenie zewnêtrzne", "tokarka1",5.5,2);
 		collection.addProcedure(lathe1);
 		contentTable.setItems(collection.getProcedureList());
 	}
@@ -58,18 +60,18 @@ public class MainController implements Initializable {
 	}
 
 	public void configureSumInfo() {
+		
 		collection.getProcedureList().addListener(new ListChangeListener<Procedure>() {
 			@Override
 			public void onChanged(Change<? extends Procedure> c) {
 				timeSumField.setText(String.valueOf(collection.sumOfTime()));
 				costSumField.setText(String.valueOf(collection.sumOfCost()));
-			}
+				seriesCostField.setText(String.valueOf(collection.sumOfCost()*partQ));
+				}
 		});
-
 	}
-
 	public TextArea getProcessInfo() {
-		return processInfo;
+		return processInfoField;
 	}
 
 }

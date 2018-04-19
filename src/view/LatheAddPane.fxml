@@ -13,17 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0"
-	prefWidth="691.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controller.LatheAddPaneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LatheAddPaneController">
 	<center>
-		<VBox prefHeight="450.0" prefWidth="400" BorderPane.alignment="CENTER">
+		<VBox BorderPane.alignment="CENTER">
 			<children>
 				<HBox layoutX="10.0" layoutY="167.0">
 					<children>
-						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="120.0"
-							text="Typ zabiegu:" wrapText="true">
+						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="120.0" text="Typ zabiegu:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -31,8 +27,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<ComboBox fx:id="latheType" prefWidth="150.0"
-							promptText="Wybierz typ zabiegu" />
+						<ComboBox fx:id="latheType" prefWidth="150.0" promptText="Wybierz typ zabiegu" />
 					</children>
 					<padding>
 						<Insets top="10.0" />
@@ -40,8 +35,7 @@
 				</HBox>
 				<HBox layoutX="10.0" layoutY="252.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="120.0" text="Obrabiarka:"
-							wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="120.0" text="Obrabiarka:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -49,8 +43,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="latheMachine" prefWidth="90.0"
-							promptText="Podaj nazwę" style="-fx-background-radius: 10;">
+						<TextField fx:id="latheMachine" prefWidth="90.0" promptText="Podaj nazwę" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -59,8 +52,7 @@
 				</HBox>
 				<HBox layoutX="10.0" layoutY="280.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="120.0" text="Koszt zabiegu [zł/h] :"
-							wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="120.0" text="Koszt zabiegu [zł/h] :" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -68,21 +60,15 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="latheCost" prefWidth="90.0"
-							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="latheCost" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
 						</TextField>
 					</children>
 				</HBox>
-				<HBox layoutX="10.0" layoutY="194.0">
-					<children>
 						<Separator prefHeight="14.0" prefWidth="316.0" />
-					</children>
-				</HBox>
-				<Label alignment="CENTER" lineSpacing="10.0" prefHeight="18.0"
-					prefWidth="329.0" text="Parametry techniczne zabiegu" wrapText="true">
+				<Label alignment="CENTER" lineSpacing="10.0" prefHeight="18.0" prefWidth="329.0" text="Parametry techniczne zabiegu" wrapText="true">
 					<opaqueInsets>
 						<Insets />
 					</opaqueInsets>
@@ -95,8 +81,7 @@
 				</Label>
 				<HBox>
 					<children>
-						<Label lineSpacing="10.0" text="Średnica początkowa [mm]:"
-							wrapText="true">
+						<Label lineSpacing="10.0" text="Średnica początkowa [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -104,8 +89,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="diameterBeforeLathe" prefWidth="90.0"
-							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="diameterBeforeLathe" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -114,8 +98,7 @@
 				</HBox>
 				<HBox>
 					<children>
-						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="146.0"
-							text="Średnica końcowa [mm]:" wrapText="true">
+						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="146.0" text="Średnica końcowa [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -123,8 +106,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="diameterAfterLathe" prefWidth="90.0"
-							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="diameterAfterLathe" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -133,8 +115,7 @@
 				</HBox>
 				<HBox>
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0" text="Długość toczenia [mm]:"
-							wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="146.0" text="Długość toczenia [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -142,8 +123,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="latheLength" prefWidth="90.0"
-							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="latheLength" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -152,8 +132,7 @@
 				</HBox>
 				<HBox>
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0" text="Droga jałowa [mm]:"
-							wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="146.0" text="Droga jałowa [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -161,8 +140,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="latheIdlePath" prefWidth="90.0"
-							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="latheIdlePath" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -171,8 +149,7 @@
 				</HBox>
 				<HBox>
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0" text="Posuw [mm/obr]:"
-							wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="146.0" text="Posuw [mm/obr]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -180,8 +157,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="latheFeed" prefWidth="90.0"
-							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="latheFeed" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -190,8 +166,7 @@
 				</HBox>
 				<HBox>
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0"
-							text="Głębokość skrawania [mm]:" wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="146.0" text="Głębokość skrawania [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -199,8 +174,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="latheDepth" prefWidth="90.0"
-							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="latheDepth" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -209,8 +183,7 @@
 				</HBox>
 				<HBox layoutX="10.0" layoutY="147.0">
 					<children>
-						<Label prefWidth="146.0" text="Prędkość obrotowa wrzeciona [mm/obr]:"
-							wrapText="true">
+						<Label prefWidth="146.0" text="Prędkość obrotowa wrzeciona [mm/obr]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -218,8 +191,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="latheRpm" prefWidth="90.0" promptText="Podaj wartość"
-							style="-fx-background-radius: 10;">
+						<TextField fx:id="latheRpm" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -229,17 +201,57 @@
 						</TextField>
 					</children>
 				</HBox>
+            <Separator layoutX="10.0" layoutY="103.0" prefHeight="14.0" prefWidth="316.0" />
+            <HBox layoutX="10.0" layoutY="312.0">
+               <children>
+                  <Label contentDisplay="CENTER" prefWidth="146.0" text="Czas przygotowawczo - zakończeniowy [min]" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="preparingTime" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="344.0">
+               <children>
+                  <Label prefWidth="146.0" text="Czas pomocniczy [min]" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="additionalTime" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
 			</children>
 		</VBox>
 	</center>
 	<right>
-		<ImageView fitHeight="347.0" fitWidth="327.0" pickOnBounds="true"
-			preserveRatio="true" BorderPane.alignment="CENTER">
+		<ImageView fitHeight="347.0" fitWidth="327.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
 			<image>
 				<Image url="@../res/toczenie.PNG" />
 			</image>
 			<BorderPane.margin>
-				<Insets right="10.0" />
+				<Insets left="10.0" right="10.0" />
 			</BorderPane.margin>
 		</ImageView>
 	</right>
@@ -251,7 +263,12 @@
 		</Label>
 	</top>
 	<bottom>
-		<Button fx:id="addProcedure" maxWidth="1.7976931348623157E308"
-			mnemonicParsing="false" text="Dodaj zabieg" BorderPane.alignment="CENTER" />
+		<Button fx:id="addProcedure" mnemonicParsing="false" prefHeight="26.0" prefWidth="306.0" text="Dodaj zabieg" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </BorderPane.margin></Button>
 	</bottom>
+   <padding>
+      <Insets left="10.0" top="10.0" />
+   </padding>
 </BorderPane>

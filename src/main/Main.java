@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	public static MainController mainController;
 	private static BorderPane mainLayout;
-	
+	private Stage stage;
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -30,14 +30,13 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(appName);
 			primaryStage.centerOnScreen();
-			primaryStage.show();
 			
 		}catch(Exception e) {
 			System.out.println("The exception was indicated during app starting.");
 			e.printStackTrace();
 		}
 		createProcessInfoWindow();
-	
+		stage.setOnHiding(x->primaryStage.show());
 	}
 
 	public void createProcessInfoWindow() {
@@ -48,12 +47,10 @@ public class Main extends Application {
             e.printStackTrace();
         }
         Scene scene = new Scene(parent);
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.setTitle("Ekran powitalny");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
 	}
-
-
 }

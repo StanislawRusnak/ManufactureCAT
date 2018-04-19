@@ -23,6 +23,8 @@ public class ProcessInfoController implements Initializable {
     @FXML
     private Button addInfo;
     
+    private ProcessInfo processInfo;
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		addInfo.setOnAction(x->configAddProcessInfo());
@@ -31,12 +33,13 @@ public class ProcessInfoController implements Initializable {
 	public void configAddProcessInfo() {
 		String exception = null;
 		try {
-		ProcessInfo processInfo = new ProcessInfo(
+		processInfo = new ProcessInfo(
 				operatorName.getText(),
 				partName.getText(),
 				Integer.parseInt(partQuantity.getText())
 				);
 		Main.mainController.getProcessInfo().setText(processInfo.toString());
+		Main.mainController.partQ = Integer.parseInt(partQuantity.getText());
 		} catch (Exception e) {
 			exception = e.getMessage();
 			Alert alert = new Alert(AlertType.CONFIRMATION,
@@ -50,8 +53,9 @@ public class ProcessInfoController implements Initializable {
 			Stage stage= (Stage) partName.getScene().getWindow();
 			stage.close();
 		}
-		/*
-		Stage mainStage= (Stage) Main.mainController.getProcessInfo().getScene().getWindow(); //pobranie referencji na okno g³owne
-		mainStage.show(); 	//pokazanie okna g³ownego  */
+	}
+
+	public ProcessInfo getProcessInfo() {
+		return processInfo;
 	}
 }

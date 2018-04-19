@@ -113,7 +113,7 @@ public class MenuPaneController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene scene = new Scene(parent,700,600);
+        Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.setTitle("Dodawanie zabiegu toczenia");
         stage.setScene(scene);

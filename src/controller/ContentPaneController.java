@@ -67,6 +67,12 @@ public class ContentPaneController implements Initializable {
         numberColumn.setMinWidth(30);
         numberColumn.setMaxWidth(30);
         numberColumn.setSortable(false);
+        numberColumn.setStyle("-fx-alignment: CENTER;");
+        typeColumn.setStyle("-fx-alignment: CENTER;");
+        parametersColumn.setStyle("-fx-alignment: CENTER;");
+        machineColumn.setStyle("-fx-alignment: CENTER;");
+        costColumn.setStyle("-fx-alignment: CENTER;");
+        timeColumn.setStyle("-fx-alignment: CENTER;");
     }
 
 	public void init(MainController mainController) {

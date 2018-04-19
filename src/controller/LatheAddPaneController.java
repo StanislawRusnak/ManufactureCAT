@@ -22,35 +22,30 @@ public class LatheAddPaneController implements Initializable {
 	private MenuPaneController menuPaneController;
 	@FXML
 	private ComboBox<String> latheType;
-
 	@FXML
 	private TextField latheMachine;
-
 	@FXML
 	private TextField latheCost;
-
 	@FXML
 	private TextField diameterBeforeLathe;
-
 	@FXML
 	private TextField diameterAfterLathe;
-
 	@FXML
 	private TextField latheLength;
-
 	@FXML
 	private TextField latheIdlePath;
-
 	@FXML
 	private TextField latheFeed;
-
 	@FXML
 	private TextField latheDepth;
-
 	@FXML
 	private TextField latheRpm;
 	@FXML
 	private Button addProcedure;
+    @FXML
+    private TextField preparingTime;
+    @FXML
+    private TextField additionalTime;
 
 	public Button getAddProcedure() {
 		return addProcedure;
@@ -75,7 +70,9 @@ public class LatheAddPaneController implements Initializable {
 					Double.parseDouble(latheRpm.getText()),
 					Double.parseDouble(latheCost.getText()), 
 					latheType.getValue(), 
-					latheMachine.getText());
+					latheMachine.getText(),
+					Double.parseDouble(preparingTime.getText()),
+					Double.parseDouble(additionalTime.getText()));
 			Main.mainController.collection.addProcedure(lathe);
 
 		} catch (Exception e) {
