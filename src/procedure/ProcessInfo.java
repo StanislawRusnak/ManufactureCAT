@@ -14,12 +14,13 @@ public class ProcessInfo {
 	private StringProperty partName;			//nazwa wykonywanego detalu/czêœci
 	private StringProperty date;				//data dodania procesu
 	private IntegerProperty partQuantity;		//liczba sztuk do wykonania w serii
-	
-	public ProcessInfo(String operatorName, String partName, Integer partQuantity) {
+	private double preparingTime;				//czas przygotowawczo zakoñczeniowy + czas uzupe³niajacy
+	public ProcessInfo(String operatorName, String partName, Integer partQuantity, double preparingTime) {
 		this.operatorName = new SimpleStringProperty();
 		this.partName = new SimpleStringProperty();
 		this.date = new SimpleStringProperty();
 		this.partQuantity = new SimpleIntegerProperty();
+		this.preparingTime = preparingTime;
 		setOperatorName(operatorName);
 		setPartName(partName);
 		setPartQuantity(partQuantity);
@@ -84,6 +85,7 @@ public class ProcessInfo {
 		return "Nazwa czêœci:  " + partName.getValue() + "\n"+
 			   "Seria:  " + partQuantity.getValue() + " szt.\n"+
 			   "Utworzony przez:  " + operatorName.getValue() + "\n"+
+			   "Czas przygotowawczo-zakoñczeniowy: " + preparingTime + " [min]\n"+
 			   "Data i godzina dodania:  " + date.getValue();
 	}	
 }

@@ -15,7 +15,6 @@ public class Procedure {
 	
 	
 	//=====pola pomocnicze konieczne do obliczenia wartoœci pól g³ownych
-	private double preparingTime;		//czas przygotowawczo zakoñczeniowy + czas uzupe³niajacy
 	private double additionalTime;		//czas pomocniczy (np. dosuniêcie narzêdzia, wymiana narz itp)
 	
 	public Procedure() {
@@ -92,14 +91,6 @@ public class Procedure {
     public DoubleProperty costProperty() {
         return cost;
     }
-    //==
-	public double getPreparingTime() {
-		return preparingTime;
-	}
-
-	public void setPreparingTime(double preparingTime) {
-		this.preparingTime = preparingTime;
-	}
 	//==
 	public double getAdditionalTime() {
 		return additionalTime;
@@ -112,6 +103,6 @@ public class Procedure {
 	@Override
 	public String toString() {
 		return "Procedure [type=" + type + ", parameters=" + parameters + ", machine=" + machine + ", time=" + time
-				+ ", cost=" + cost + ", preparingTime=" + preparingTime + ", additionalTime=" + additionalTime + "]";
+				+ ", cost=" + cost + ", additionalTime=" + additionalTime + "]";
 	}
 }

@@ -12,7 +12,7 @@ public class Lathe extends Procedure {
 
 	public Lathe(double diameterBefore, double diameterAfter, double latheLength, double feed,
 			double depthOfCut, double idleTrack, double rpm, double costPerHour,String type,
-			String machine,double preparingTime, double additionalTime) {
+			String machine, double additionalTime) {
 		this.diameterBefore = diameterBefore;
 		this.diameterAfter = diameterAfter;
 		this.latheLength = latheLength;
@@ -21,13 +21,12 @@ public class Lathe extends Procedure {
 		this.idleTrack = idleTrack;
 		this.rpm = rpm;
 		this.costPerHour = costPerHour;
-		setPreparingTime(preparingTime);
 		setAdditionalTime(additionalTime);
 
 		setType(type);
 		setParameters(toString());
 		setMachine(machine);
-		setTime(timeOfLathe()+getPreparingTime()+getAdditionalTime());
+		setTime(timeOfLathe()+getAdditionalTime());
 		setCost(costOfLathe());
 	}
 	
@@ -52,7 +51,6 @@ public class Lathe extends Procedure {
 				"\nPosuw: " + feed + " [mm/obr]"+ 
 				"\nG³ebokoœæ skrawania: " + depthOfCut +" [mm]"+
 				"\nPrêdkoœæ obr. wrzeciona: "+ rpm +" [obr/min]"+
-				"\nCzas przygot-zak: "+ getPreparingTime() +" [min]"+
 				"\nCzas pomocniczy: "+ getAdditionalTime() +" [min]";
 	}
 }

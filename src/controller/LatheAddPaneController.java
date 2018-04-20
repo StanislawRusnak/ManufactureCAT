@@ -43,8 +43,6 @@ public class LatheAddPaneController implements Initializable {
 	@FXML
 	private Button addProcedure;
     @FXML
-    private TextField preparingTime;
-    @FXML
     private TextField additionalTime;
 
 	public Button getAddProcedure() {
@@ -71,7 +69,6 @@ public class LatheAddPaneController implements Initializable {
 					Double.parseDouble(latheCost.getText()), 
 					latheType.getValue(), 
 					latheMachine.getText(),
-					Double.parseDouble(preparingTime.getText()),
 					Double.parseDouble(additionalTime.getText()));
 			Main.mainController.collection.addProcedure(lathe);
 

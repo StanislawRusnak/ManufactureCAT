@@ -24,16 +24,16 @@
 	<center>
 		<VBox spacing="5.0" BorderPane.alignment="CENTER">
 			<children>
-				<HBox prefHeight="154.0" prefWidth="1200.0" spacing="100.0">
+				<HBox prefHeight="170.0" prefWidth="1200.0" spacing="100.0">
 					<children>
-						<VBox prefHeight="154.0" prefWidth="311.0">
+						<VBox prefHeight="170.0" prefWidth="354.0">
 							<children>
-								<Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="257.0" text="Informacje o karcie:" VBox.vgrow="NEVER">
+								<Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="257.0" text="Informacje o operacji technol. :" VBox.vgrow="NEVER">
 									<font>
 										<Font name="System Bold Italic" size="20.0" />
 									</font>
 								</Label>
-								<TextArea fx:id="processInfoField" editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="96.0" text="Nazwa części:&#10;Seria:&#10;Utworzony przez:&#10;Data dodania:" />
+								<TextArea fx:id="processInfoField" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="126.0" prefWidth="354.0" text="Nazwa części:&#10;Seria:&#10;Utworzony przez:&#10;Data dodania:&#10;Czas przygotowawczo-zakończeniowy:" />
 							</children>
 						</VBox>
 						<GridPane alignment="CENTER" hgap="50.0" prefHeight="114.0" prefWidth="647.0">
@@ -81,7 +81,7 @@
 						<Insets />
 					</VBox.margin>
 					<padding>
-						<Insets left="80.0" />
+						<Insets left="70.0" />
 					</padding>
 				</HBox>
 				<fx:include fx:id="contentPane" maxHeight="1.7976931348623157E308" source="ContentPane.fxml" VBox.vgrow="ALWAYS" />

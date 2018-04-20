@@ -21,8 +21,9 @@ public class ProcessInfoController implements Initializable {
     @FXML
     private TextField operatorName;
     @FXML
+    private TextField preparingTimeField;
+    @FXML
     private Button addInfo;
-    
     private ProcessInfo processInfo;
     
 	@Override
@@ -36,7 +37,8 @@ public class ProcessInfoController implements Initializable {
 		processInfo = new ProcessInfo(
 				operatorName.getText(),
 				partName.getText(),
-				Integer.parseInt(partQuantity.getText())
+				Integer.parseInt(partQuantity.getText()),
+				Double.parseDouble(preparingTimeField.getText())
 				);
 		Main.mainController.getProcessInfo().setText(processInfo.toString());
 		Main.mainController.partQ = Integer.parseInt(partQuantity.getText());

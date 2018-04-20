@@ -79,9 +79,9 @@
 						<Insets bottom="10.0" />
 					</VBox.margin>
 				</Label>
-				<HBox>
+				<HBox spacing="5.0">
 					<children>
-						<Label lineSpacing="10.0" text="Średnica początkowa [mm]:" wrapText="true">
+						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="180.0" text="Średnica początkowa [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -96,9 +96,9 @@
 						</TextField>
 					</children>
 				</HBox>
-				<HBox>
+				<HBox spacing="5.0">
 					<children>
-						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="146.0" text="Średnica końcowa [mm]:" wrapText="true">
+						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="180.0" text="Średnica końcowa [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -113,9 +113,9 @@
 						</TextField>
 					</children>
 				</HBox>
-				<HBox>
+				<HBox spacing="5.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0" text="Długość toczenia [mm]:" wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="180.0" text="Długość toczenia [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -130,9 +130,9 @@
 						</TextField>
 					</children>
 				</HBox>
-				<HBox>
+				<HBox spacing="5.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0" text="Droga jałowa [mm]:" wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="180.0" text="Droga jałowa [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -147,9 +147,9 @@
 						</TextField>
 					</children>
 				</HBox>
-				<HBox>
+				<HBox spacing="5.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0" text="Posuw [mm/obr]:" wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="180.0" text="Posuw [mm/obr]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -164,9 +164,9 @@
 						</TextField>
 					</children>
 				</HBox>
-				<HBox>
+				<HBox spacing="5.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="146.0" text="Głębokość skrawania [mm]:" wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="180.0" text="Głębokość skrawania [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -178,12 +178,15 @@
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
 						</TextField>
 					</children>
 				</HBox>
-				<HBox layoutX="10.0" layoutY="147.0">
+				<HBox layoutX="10.0" layoutY="147.0" spacing="5.0">
 					<children>
-						<Label prefWidth="146.0" text="Prędkość obrotowa wrzeciona [mm/obr]:" wrapText="true">
+						<Label prefWidth="180.0" text="Prędkość obrotowa wrzeciona [mm/obr]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -202,29 +205,9 @@
 					</children>
 				</HBox>
             <Separator layoutX="10.0" layoutY="103.0" prefHeight="14.0" prefWidth="316.0" />
-            <HBox layoutX="10.0" layoutY="312.0">
+            <HBox layoutX="10.0" layoutY="344.0" spacing="5.0">
                <children>
-                  <Label contentDisplay="CENTER" prefWidth="146.0" text="Czas przygotowawczo - zakończeniowy [min]" wrapText="true">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="preparingTime" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="344.0">
-               <children>
-                  <Label prefWidth="146.0" text="Czas pomocniczy [min]" wrapText="true">
+                  <Label prefWidth="180.0" text="Czas pomocniczy [min]" wrapText="true">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
