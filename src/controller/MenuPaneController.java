@@ -120,4 +120,8 @@ public class MenuPaneController implements Initializable {
         stage.show();
 	}
 
+	public MenuItem getNewMenuItem() {
+		return newMenuItem;
+	}
+
 }

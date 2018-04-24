@@ -51,12 +51,12 @@ public class ContentPaneController implements Initializable {
         TableColumn<Procedure, String> costColumn = new TableColumn<Procedure, String>(COST_COLUMN);
         costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
         
-        getContentTable().getColumns().add(numberColumn);
-        getContentTable().getColumns().add(typeColumn);
-        getContentTable().getColumns().add(parametersColumn);
-        getContentTable().getColumns().add(machineColumn);
-        getContentTable().getColumns().add(timeColumn);
-        getContentTable().getColumns().add(costColumn);
+        contentTable.getColumns().add(numberColumn);
+        contentTable.getColumns().add(typeColumn);
+        contentTable.getColumns().add(parametersColumn);
+        contentTable.getColumns().add(machineColumn);
+        contentTable.getColumns().add(timeColumn);
+        contentTable.getColumns().add(costColumn);
         
         typeColumn.setSortable(false);
         parametersColumn.setSortable(false);
