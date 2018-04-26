@@ -5,14 +5,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import main.Main;
 import procedure.ProcessInfo;
@@ -65,12 +62,7 @@ public class ProcessInfoController implements Initializable {
 		Main.mainController.partQ = Integer.parseInt(partQuantity.getText());
 		} catch (Exception e) {
 			exception = e.getMessage();
-			Alert alert = new Alert(AlertType.CONFIRMATION,
-					"Z³y format danych. Wpisz zabieg ponownie.\nPrzyczyna: " + e.getMessage(), ButtonType.OK);
-			alert.showAndWait();
-			if (alert.getResult() == ButtonType.OK) {
-				alert.close();
-			}
+			Main.mainController.generateDataWarning(e);
 		}
 		if (exception == null) {
 			Stage stage= (Stage) partName.getScene().getWindow();

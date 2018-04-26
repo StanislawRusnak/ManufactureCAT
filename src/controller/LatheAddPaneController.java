@@ -3,10 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -127,19 +124,11 @@ public class LatheAddPaneController implements Initializable {
 			Main.mainController.collection.addProcedure(createLatheObject());
 		} catch (Exception e) {
 			exception = e.getMessage();
-			generateDataWarning(e);
+			Main.mainController.generateDataWarning(e);
 		}
 		if (exception == null) {
 			stage = (Stage) latheFeed.getScene().getWindow();
 			stage.close();
-		}
-	}
-	public void generateDataWarning(Exception e) {
-		Alert alert = new Alert(AlertType.CONFIRMATION,
-				"Z³y format danych. Wpisz zabieg ponownie.\nPrzyczyna: " + e.getMessage(), ButtonType.OK);
-		alert.showAndWait();
-		if (alert.getResult() == ButtonType.OK) {
-			alert.close();
 		}
 	}
 }

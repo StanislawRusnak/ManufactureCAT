@@ -146,7 +146,7 @@ public class ContentPaneController implements Initializable {
 					main.collection.getProcedureList().add(index, latheAddPaneContr.createLatheObject());
 				} catch (Exception e) {
 					exception = e.getMessage();
-					latheAddPaneContr.generateDataWarning(e);
+					main.generateDataWarning(e);
 				}
 				if (exception == null) {
 					Stage stage;
