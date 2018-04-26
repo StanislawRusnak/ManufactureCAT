@@ -3,11 +3,15 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import main.Main;
@@ -22,13 +26,30 @@ public class ProcessInfoController implements Initializable {
     private TextField operatorName;
     @FXML
     private TextField preparingTimeField;
+
+    @FXML
+    private BorderPane infoPane;
     @FXML
     private Button addInfo;
     private ProcessInfo processInfo;
-    
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		addInfo.setOnAction(x->configAddProcessInfo());
+	
+		infoPane.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode() == KeyCode.ENTER) {
+					configAddProcessInfo();
+					try {
+						event.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 	}
 
 	public void configAddProcessInfo() {

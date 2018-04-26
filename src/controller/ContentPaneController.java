@@ -6,12 +6,22 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import procedure.Lathe;
 import procedure.Procedure;
 
 public class ContentPaneController implements Initializable {
@@ -31,7 +41,8 @@ public class ContentPaneController implements Initializable {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		configureTable();
+		configureTable();		//budowanie tabeli
+		configureTableEvents();	//konfiguracja usuwania i edytowania zabiegow w tabeli
 		
 	}
     private void configureTable() {
@@ -75,9 +86,77 @@ public class ContentPaneController implements Initializable {
         timeColumn.setStyle("-fx-alignment: CENTER;");
     }
 
-	public void init(MainController mainController) {
-		main = mainController;
+	public void configureTableEvents() {
+		contentTable.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode() == KeyCode.DELETE) {
+					getAndDeleteProcedure();
+				}
+			}
+		});
 		
-	}
+		contentTable.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
+			@Override
+			public void handle(MouseEvent event) {
+				if(event.getClickCount() == 5) {
+					Alert alert = new Alert(AlertType.WARNING,
+							"Panieee, wez pan zostaw t¹ myszke w spokoju !\nNie mêcz jej ! " , ButtonType.OK);
+					alert.showAndWait();
+					if (alert.getResult() == ButtonType.OK) {
+						alert.close();
+						}
+				} else if(event.getClickCount() == 2) {
+					editLatheProcedure();
+				}
+			}
+		});
+	}
+	protected void getAndDeleteProcedure() {
+		int index = contentTable.getSelectionModel().getSelectedIndex();
+		main.collection.getProcedureList().remove(index);
+	}
+	private void editLatheProcedure() {
+		Lathe editedProcedure;
+		int index = contentTable.getSelectionModel().getSelectedIndex();
+		editedProcedure = (Lathe) main.collection.getProcedureList().get(index);
+		LatheAddPaneController latheAddPaneContr = main.menuPaneController.createLatheWindow();
+		//kopiowanie pól starego zabiegu do okna edytowania
+		latheAddPaneContr.additionalTime.setText(String.valueOf(editedProcedure.getAdditionalTime()));
+		latheAddPaneContr.diameterAfterLathe.setText(String.valueOf(editedProcedure.getDiameterAfter()));
+		latheAddPaneContr.diameterBeforeLathe.setText(String.valueOf(editedProcedure.getDiameterBefore()));
+		latheAddPaneContr.latheCost.setText(String.valueOf(editedProcedure.getCostPerHour()));
+		latheAddPaneContr.latheDepth.setText(String.valueOf(editedProcedure.getDepthOfCut()));
+		latheAddPaneContr.latheFeed.setText(String.valueOf(editedProcedure.getFeed()));
+		latheAddPaneContr.latheIdlePath.setText(String.valueOf(editedProcedure.getIdleTrack()));
+		latheAddPaneContr.latheLength.setText(String.valueOf(editedProcedure.getLatheLength()));
+		latheAddPaneContr.latheMachine.setText(String.valueOf(editedProcedure.getMachine()));
+		latheAddPaneContr.latheRpm.setText(String.valueOf(editedProcedure.getRpm()));
+		latheAddPaneContr.latheType.setValue(String.valueOf(editedProcedure.getType()));
+		
+		//po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce nowego w kolekcji
+		latheAddPaneContr.addProcedure.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				String exception = null;
+				try {
+					main.collection.getProcedureList().remove(editedProcedure);
+					main.collection.getProcedureList().add(index, latheAddPaneContr.createLatheObject());
+				} catch (Exception e) {
+					exception = e.getMessage();
+					latheAddPaneContr.generateDataWarning(e);
+				}
+				if (exception == null) {
+					Stage stage;
+					stage = (Stage) latheAddPaneContr.latheFeed.getScene().getWindow();
+					stage.close();
+				}	
+			}
+		});
+	}
+    public void init(MainController mainController) {
+		main = mainController;
+	}
 }

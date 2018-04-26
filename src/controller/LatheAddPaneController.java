@@ -8,7 +8,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import main.Main;
 import procedure.Lathe;
@@ -21,69 +24,122 @@ public class LatheAddPaneController implements Initializable {
 	@FXML
 	private MenuPaneController menuPaneController;
 	@FXML
-	private ComboBox<String> latheType;
+	protected ComboBox<String> latheType;
 	@FXML
-	private TextField latheMachine;
+	protected TextField latheMachine;
 	@FXML
-	private TextField latheCost;
+	protected TextField latheCost;
 	@FXML
-	private TextField diameterBeforeLathe;
+	protected TextField diameterBeforeLathe;
 	@FXML
-	private TextField diameterAfterLathe;
+	protected TextField diameterAfterLathe;
 	@FXML
-	private TextField latheLength;
+	protected TextField latheLength;
 	@FXML
-	private TextField latheIdlePath;
+	protected TextField latheIdlePath;
 	@FXML
-	private TextField latheFeed;
+	protected TextField latheFeed;
 	@FXML
-	private TextField latheDepth;
+	protected TextField latheDepth;
 	@FXML
-	private TextField latheRpm;
+	protected TextField latheRpm;
 	@FXML
-	private Button addProcedure;
+	protected Button addProcedure;
+	@FXML
+	private Label diamAfterLatheLabel;
     @FXML
-    private TextField additionalTime;
-
-	public Button getAddProcedure() {
-		return addProcedure;
-	}
+    private ImageView helpImageLathe;
+    @FXML
+    protected TextField additionalTime;
+    
+    private Stage stage;
+    public static final String TRANSVE_LATHE = "Toczenie poprzeczne";
+    public static final String INNER_LATHE = "Toczenie wewnêtrzne";
+    public static final String OUTER_LATHE = "Toczenie zewnêtrzne";
+	//public Button getAddProcedure() {
+	//	return addProcedure;
+	//}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		latheType.getItems().addAll("Toczenie zewnêtrzne", "Toczenie wewnêtrzne", "Toczenie poprzeczne");
-		Button latheAdd = getAddProcedure();
+		latheType.getItems().addAll(INNER_LATHE, OUTER_LATHE, TRANSVE_LATHE);
+		Button latheAdd = addProcedure;
 		latheAdd.setOnAction(x -> configureLatheAdd());
+		latheType.setOnAction(x-> loadLatheType());
+		
 	}
 
+	private void loadLatheType() {
+		try {
+			helpImageLathe.setFitWidth(500);
+			helpImageLathe.setFitHeight(450);
+			
+		if(latheType.getValue() == TRANSVE_LATHE) {				//jeœli wybierzemy toczenie poprzeczne to zmien obraz i ukryj sredn koncowa
+				diameterAfterLathe.setVisible(false);
+				diamAfterLatheLabel.setVisible(false);
+				helpImageLathe.setImage(new Image("/res/toczeniePoprzeczne.PNG"));
+				
+			}else if(latheType.getValue() == OUTER_LATHE) {
+				diameterAfterLathe.setVisible(true);
+				diamAfterLatheLabel.setVisible(true);
+				helpImageLathe.setImage(new Image("/res/toczenieZewn.PNG"));
+				
+			}else if(latheType.getValue() == INNER_LATHE) {
+				diameterAfterLathe.setVisible(true);
+				diamAfterLatheLabel.setVisible(true);
+				helpImageLathe.setImage(new Image("/res/toczenieWewn.PNG"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	protected Procedure createLatheObject() {
+		Procedure lathe;
+			if(latheType.getValue() == TRANSVE_LATHE) {
+				lathe = new Lathe(Double.parseDouble(diameterBeforeLathe.getText()),
+						Double.parseDouble(latheLength.getText()),
+						Double.parseDouble(latheFeed.getText()), 
+						Double.parseDouble(latheDepth.getText()),
+						Double.parseDouble(latheIdlePath.getText()), 
+						Double.parseDouble(latheRpm.getText()),
+						Double.parseDouble(latheCost.getText()), 
+						latheType.getValue(), 
+						latheMachine.getText(),
+						Double.parseDouble(additionalTime.getText()));
+			}else {
+				 lathe = new Lathe(Double.parseDouble(diameterBeforeLathe.getText()),
+						Double.parseDouble(diameterAfterLathe.getText()), 
+						Double.parseDouble(latheLength.getText()),
+						Double.parseDouble(latheFeed.getText()), 
+						Double.parseDouble(latheDepth.getText()),
+						Double.parseDouble(latheIdlePath.getText()), 
+						Double.parseDouble(latheRpm.getText()),
+						Double.parseDouble(latheCost.getText()), 
+						latheType.getValue(), 
+						latheMachine.getText(),
+						Double.parseDouble(additionalTime.getText()));
+			}
+			return lathe;
+	}
 	public void configureLatheAdd() {
 		String exception = null;
 		try {
-			Procedure lathe = new Lathe(Double.parseDouble(diameterBeforeLathe.getText()),
-					Double.parseDouble(diameterAfterLathe.getText()), 
-					Double.parseDouble(latheLength.getText()),
-					Double.parseDouble(latheFeed.getText()), 
-					Double.parseDouble(latheDepth.getText()),
-					Double.parseDouble(latheIdlePath.getText()), 
-					Double.parseDouble(latheRpm.getText()),
-					Double.parseDouble(latheCost.getText()), 
-					latheType.getValue(), 
-					latheMachine.getText(),
-					Double.parseDouble(additionalTime.getText()));
-			Main.mainController.collection.addProcedure(lathe);
-
+			Main.mainController.collection.addProcedure(createLatheObject());
 		} catch (Exception e) {
 			exception = e.getMessage();
-			Alert alert = new Alert(AlertType.CONFIRMATION,
-					"Z³y format danych. Wpisz zabieg ponownie.\nPrzyczyna: " + e.getMessage(), ButtonType.OK);
-			alert.showAndWait();
-			if (alert.getResult() == ButtonType.OK) {
-				alert.close();
-			}
+			generateDataWarning(e);
 		}
 		if (exception == null) {
-			Stage stage = (Stage) latheFeed.getScene().getWindow();
+			stage = (Stage) latheFeed.getScene().getWindow();
 			stage.close();
+		}
+	}
+	public void generateDataWarning(Exception e) {
+		Alert alert = new Alert(AlertType.CONFIRMATION,
+				"Z³y format danych. Wpisz zabieg ponownie.\nPrzyczyna: " + e.getMessage(), ButtonType.OK);
+		alert.showAndWait();
+		if (alert.getResult() == ButtonType.OK) {
+			alert.close();
 		}
 	}
 }
