@@ -53,16 +53,13 @@ public class LatheAddPaneController implements Initializable {
     public static final String TRANSVE_LATHE = "Toczenie poprzeczne";
     public static final String INNER_LATHE = "Toczenie wewnêtrzne";
     public static final String OUTER_LATHE = "Toczenie zewnêtrzne";
-	//public Button getAddProcedure() {
-	//	return addProcedure;
-	//}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		latheType.getItems().addAll(INNER_LATHE, OUTER_LATHE, TRANSVE_LATHE);
+		latheType.getItems().addAll(OUTER_LATHE,INNER_LATHE,TRANSVE_LATHE);
 		Button latheAdd = addProcedure;
 		latheAdd.setOnAction(x -> configureLatheAdd());
-		latheType.setOnAction(x-> loadLatheType());
+		latheType.setOnAction(x -> loadLatheType());
 		
 	}
 

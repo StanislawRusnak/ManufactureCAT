@@ -35,20 +35,21 @@ public class Main extends Application {
 			System.out.println("The exception was indicated during app starting.");
 			e.printStackTrace();
 		}
-		createProcessInfoWindow();
+		createLogInWindow();
 		stage.setOnHiding(x->primaryStage.show());
+		primaryStage.setOnShown(x->mainController.getMenuPaneController().createProcessInfoWindow());
 	}
 
-	public void createProcessInfoWindow() {
+	public void createLogInWindow() {
 		Parent parent = null;
         try {
-            parent = FXMLLoader.load(getClass().getResource("/view/ProcessInfoPane.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("/view/LogInPane.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene scene = new Scene(parent);
         stage = new Stage();
-        stage.setTitle("Ekran powitalny");
+        stage.setTitle("Logowanie");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

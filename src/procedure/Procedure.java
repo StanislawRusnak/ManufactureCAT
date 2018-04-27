@@ -24,6 +24,18 @@ public class Procedure {
 		this.time = new SimpleDoubleProperty();
 		this.cost = new SimpleDoubleProperty();
 	}
+	public Procedure(String type,String parameters, String machine,Double time, Double cost) {
+		this.type = new SimpleStringProperty();
+		this.parameters = new SimpleStringProperty();
+		this.machine = new SimpleStringProperty();
+		this.time = new SimpleDoubleProperty();
+		this.cost = new SimpleDoubleProperty();
+		setType(type);
+		setParameters(parameters);
+		setMachine(machine);
+		setTime(time);
+		setCost(cost);
+	}
 	
 	// getters and setters
     public String getType() {
@@ -66,14 +78,14 @@ public class Procedure {
         return time.get();
     }
  
-    public void setTime(Double time) {
+    public void setTime(Double time) {		//zaokr¹glanie w GÓRÊ do jednej setnej minuty
     	time*=100;
-    	time = (double) Math.round(time);
+    	time = Math.ceil(time);
     	time/=100;
         this.time.setValue(time);
     }
  
-    public DoubleProperty timeProperty() {
+    public DoubleProperty timeProperty() {	
         return time;
     }
     //==
@@ -81,9 +93,9 @@ public class Procedure {
         return cost.get();
     }
  
-    public void setCost(Double cost) {
+    public void setCost(Double cost) {	//zaokr¹glanie w GÓRÊ do jednego grosza
     	cost*=100;
-    	cost= (double) Math.round(cost);
+    	cost= Math.ceil(cost);
     	cost/=100;
         this.cost.setValue(cost);
     }

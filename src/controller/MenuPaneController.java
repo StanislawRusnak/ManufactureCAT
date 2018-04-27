@@ -104,13 +104,13 @@ public class MenuPaneController implements Initializable {
             }
         });
         deleteProcedureMItem.setOnAction(x -> main.contentPaneController.getAndDeleteProcedure());
+        newMenuItem.setOnAction(x -> createProcessInfoWindow());
     }
 	public void init(MainController mainController) {
 		main = mainController;
 		
 	}
 	public LatheAddPaneController createLatheWindow() {
-		//Parent parent = null;
 		LatheAddPaneController windowController=null;
 		BorderPane mainLayout;
         try {
@@ -118,8 +118,6 @@ public class MenuPaneController implements Initializable {
         	loader.setLocation(getClass().getResource("/view/LatheAddPane.fxml"));
         	mainLayout = loader.load();
         	windowController = loader.getController();
-            //parent = FXMLLoader.load(getClass().getResource("/view/LatheAddPane.fxml"));
-           
         
         Scene scene = new Scene(mainLayout);
         Stage stage = new Stage();
@@ -132,7 +130,27 @@ public class MenuPaneController implements Initializable {
         }
 		return windowController;
 	}
-
+	public ProcessInfoController createProcessInfoWindow() {
+		ProcessInfoController windowController=null;
+		BorderPane mainLayout;
+        try {
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(getClass().getResource("/view/ProcessInfoPane.fxml"));
+        	mainLayout = loader.load();
+        	windowController = loader.getController();
+        
+        Scene scene = new Scene(mainLayout);
+        Stage stage = new Stage();
+        stage.setTitle("Dodawanie podstawowych infomracji o operacji");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+        
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return windowController;
+	}
 	public MenuItem getNewMenuItem() {
 		return newMenuItem;
 	}

@@ -24,11 +24,11 @@
 	<center>
 		<VBox spacing="5.0" BorderPane.alignment="CENTER">
 			<children>
-				<HBox prefHeight="170.0" prefWidth="1200.0" spacing="100.0">
+				<HBox prefHeight="170.0" prefWidth="1200.0" spacing="50.0">
 					<children>
 						<VBox prefHeight="170.0" prefWidth="354.0">
 							<children>
-								<Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="257.0" text="Informacje o operacji technol. :" VBox.vgrow="NEVER">
+								<Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="257.0" text="Informacje o operacji technolog. :" VBox.vgrow="NEVER">
 									<font>
 										<Font name="System Bold Italic" size="20.0" />
 									</font>
@@ -36,41 +36,51 @@
 								<TextArea fx:id="processInfoField" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="126.0" prefWidth="354.0" text="Nazwa części:&#10;Seria:&#10;Utworzony przez:&#10;Data dodania:&#10;Czas przygotowawczo-zakończeniowy:" />
 							</children>
 						</VBox>
-						<GridPane alignment="CENTER" hgap="50.0" prefHeight="114.0" prefWidth="647.0">
+						<GridPane alignment="CENTER" hgap="20.0" prefHeight="130.0" prefWidth="680.0">
 							<columnConstraints>
-								<ColumnConstraints hgrow="SOMETIMES" maxWidth="201.40001220703124" minWidth="167.000048828125" prefWidth="167.000048828125" />
-								<ColumnConstraints hgrow="SOMETIMES" maxWidth="222.199951171875" minWidth="0.0" prefWidth="173.60001220703126" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.19998779296873" minWidth="10.0" prefWidth="197.19998779296873" />
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="89.99998779296877" />
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="20.80000000000001" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
 							</columnConstraints>
 							<rowConstraints>
 								<RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="71.00001220703125" vgrow="SOMETIMES" />
 								<RowConstraints maxHeight="56.000009155273446" minHeight="0.0" prefHeight="42.99998779296875" vgrow="SOMETIMES" />
 							</rowConstraints>
 							<children>
-								<Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Czas sumaryczny [min]:" textAlignment="CENTER" wrapText="true">
+								<Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Czas sumaryczny 1szt. [min]:" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
 									<font>
-										<Font name="System Bold Italic" size="20.0" />
+										<Font name="System Bold Italic" size="18.0" />
 									</font>
 								</Label>
-								<Label alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Koszt sumaryczny (1 szt.) [zł]:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
+								<Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Koszt sumaryczny 1 szt. [zł]:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
 									<font>
-										<Font name="System Bold Italic" size="20.0" />
+										<Font name="System Bold Italic" size="18.0" />
 									</font>
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <GridPane.margin>
-                              <Insets top="6.0" />
+                              <Insets />
                            </GridPane.margin>
 								</Label>
-								<TextField fx:id="timeSumField" alignment="CENTER" editable="false" maxWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-								<TextField fx:id="costSumField" alignment="CENTER" editable="false" maxWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <Label layoutX="228.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Koszt wykonania serii [zł]:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2">
+								<TextField fx:id="timeSumField" alignment="CENTER" editable="false" maxWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+								<TextField fx:id="costSumField" alignment="CENTER" editable="false" maxWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Label layoutX="228.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Koszt wykonania serii [zł]:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
-                              <Font name="System Bold Italic" size="20.0" />
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="seriesCostField" alignment="CENTER" editable="false" maxWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Label layoutX="168.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Czas wykonania serii [min]:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="seriesCostField" alignment="CENTER" editable="false" maxWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <TextField fx:id="seriesTimeField" alignment="CENTER" editable="false" layoutX="171.0" layoutY="102.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
 							</children>
 							<HBox.margin>
 								<Insets bottom="20.0" top="20.0" />
@@ -81,7 +91,7 @@
 						<Insets />
 					</VBox.margin>
 					<padding>
-						<Insets left="70.0" />
+						<Insets left="50.0" />
 					</padding>
 				</HBox>
 				<fx:include fx:id="contentPane" maxHeight="1.7976931348623157E308" source="ContentPane.fxml" VBox.vgrow="ALWAYS" />

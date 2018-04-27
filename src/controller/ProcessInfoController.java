@@ -12,54 +12,63 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import main.Main;
+import procedure.Procedure;
 import procedure.ProcessInfo;
 
 public class ProcessInfoController implements Initializable {
     @FXML
+    private BorderPane processPane;
+    @FXML
     private TextField partName;
+
     @FXML
     private TextField partQuantity;
+
     @FXML
-    private TextField operatorName;
+    private TextField halfProduct;
+    
+    @FXML
+    private TextField halfProductCost;
+
     @FXML
     private TextField preparingTimeField;
 
     @FXML
-    private BorderPane infoPane;
-    @FXML
     private Button addInfo;
-    private ProcessInfo processInfo;
+    
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		addInfo.setOnAction(x->configAddProcessInfo());
-	
-		infoPane.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent event) {
-				if(event.getCode() == KeyCode.ENTER) {
-					configAddProcessInfo();
-					try {
-						event.wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+		processPane.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+		@Override
+		public void handle(KeyEvent event) {
+			if(event.getCode() == KeyCode.ENTER) {
+				configAddProcessInfo();
+				try {
+					event.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
 			}
-		});
+		}
+	}); 
 	}
 
 	public void configAddProcessInfo() {
 		String exception = null;
+		ProcessInfo procInfo = Main.mainController.processInfo;
+		Procedure halfProductObject = Main.mainController.halfProduct;
+		
 		try {
-		processInfo = new ProcessInfo(
-				operatorName.getText(),
-				partName.getText(),
-				Integer.parseInt(partQuantity.getText()),
-				Double.parseDouble(preparingTimeField.getText())
-				);
-		Main.mainController.getProcessInfo().setText(processInfo.toString());
-		Main.mainController.partQ = Integer.parseInt(partQuantity.getText());
+			procInfo.setPartName(partName.getText());
+			procInfo.setPartQuantity(Integer.parseInt(partQuantity.getText()));
+			procInfo.setPreparingTime(Double.parseDouble(preparingTimeField.getText()));
+			procInfo.setHalfProduct(halfProduct.getText());
+			procInfo.setHalfProductCost(Double.parseDouble(halfProductCost.getText()));
+			Main.mainController.getProcessInfo().setText(procInfo.toString());
+			halfProductObject.setParameters("Prêt okr¹g³y "+halfProduct.getText()+" [mm]");
+			halfProductObject.setCost(Double.parseDouble(halfProductCost.getText()));
 		} catch (Exception e) {
 			exception = e.getMessage();
 			Main.mainController.generateDataWarning(e);
@@ -69,8 +78,5 @@ public class ProcessInfoController implements Initializable {
 			stage.close();
 		}
 	}
-
-	public ProcessInfo getProcessInfo() {
-		return processInfo;
-	}
 }
+
