@@ -14,7 +14,7 @@
 					<menus>
 						<Menu fx:id="productMenu" mnemonicParsing="false" text="Produkt">
 							<items>
-								<MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="Edytuj półfabrykat" />
+								<MenuItem fx:id="editMenuItem" mnemonicParsing="false" text="Edytuj półfabrykat" />
 								<MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Zapisz" />
 								<MenuItem fx:id="loadMenuItem" mnemonicParsing="false" text="Wczytaj" />
 								<MenuItem fx:id="printMenuItem" mnemonicParsing="false" text="Drukuj" />

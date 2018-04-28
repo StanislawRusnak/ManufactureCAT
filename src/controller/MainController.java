@@ -6,9 +6,7 @@ import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -38,8 +36,6 @@ public class MainController implements Initializable {
 	private TextField seriesTimeField;
 	@FXML
 	private TextArea processInfoField;
-
-	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -47,7 +43,6 @@ public class MainController implements Initializable {
 		controlPaneController.init(this);
 		contentPaneController.init(this);
 		configureTable();
-		configureMenu();
 		configureSumInfo();
 	}
 	
@@ -58,15 +53,8 @@ public class MainController implements Initializable {
 		collection.addProcedure(lathe1);
 		contentTable.setItems(collection.getProcedureList());	
 	}
-	public void configureMenu() {
-		MenuItem latheMenuItem = menuPaneController.getLatheMenuItem();
-		Button latheShort = controlPaneController.getLatheShortMenuItem();
-		latheMenuItem.setOnAction(x -> menuPaneController.createLatheWindow());
-		latheShort.setOnAction(x -> menuPaneController.createLatheWindow());
-	}
 
 	public void configureSumInfo() {
-		
 		collection.getProcedureList().addListener(new ListChangeListener<Procedure>() {
 			@Override
 			public void onChanged(Change<? extends Procedure> c) {
@@ -82,7 +70,7 @@ public class MainController implements Initializable {
 	}
 	
 	public void generateDataWarning(Exception e) {
-		Alert alert = new Alert(AlertType.WARNING,
+		Alert alert = new Alert(AlertType.ERROR,
 				"Z³y format danych. Wpisz zabieg ponownie.\nPrzyczyna: " + e.getMessage(), ButtonType.OK);
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {

@@ -29,7 +29,7 @@ public class MenuPaneController implements Initializable {
     private Menu productMenu;
 
     @FXML
-    private MenuItem newMenuItem;
+    private MenuItem editMenuItem;
 
     @FXML
     private MenuItem saveMenuItem;
@@ -103,15 +103,17 @@ public class MenuPaneController implements Initializable {
                 stage.show();
             }
         });
+    	latheMenuItem.setOnAction(x -> createLatheWindow());
         deleteProcedureMItem.setOnAction(x -> main.contentPaneController.getAndDeleteProcedure());
-        newMenuItem.setOnAction(x -> createProcessInfoWindow());
+        editMenuItem.setOnAction(x -> createProcessInfoWindow());
+        drillMenuitem.setOnAction(x -> createDrillWindow());
     }
 	public void init(MainController mainController) {
 		main = mainController;
 		
 	}
 	public LatheAddPaneController createLatheWindow() {
-		LatheAddPaneController windowController=null;
+		LatheAddPaneController windowController = null;
 		BorderPane mainLayout;
         try {
         	FXMLLoader loader = new FXMLLoader();
@@ -151,8 +153,25 @@ public class MenuPaneController implements Initializable {
         }
 		return windowController;
 	}
-	public MenuItem getNewMenuItem() {
-		return newMenuItem;
+	
+	public DrillAddPaneController createDrillWindow() {
+		DrillAddPaneController windowController = null;
+		BorderPane mainLayout;
+        try {
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(getClass().getResource("/view/DrillAddPane.fxml"));
+        	mainLayout = loader.load();
+        	windowController = loader.getController();
+        
+        Scene scene = new Scene(mainLayout);
+        Stage stage = new Stage();
+        stage.setTitle("Dodawanie zabiegu wiercenia");
+        stage.setScene(scene);
+        stage.show();
+        
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return windowController;
 	}
-
 }

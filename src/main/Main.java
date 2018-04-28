@@ -39,7 +39,6 @@ public class Main extends Application {
 		stage.setOnHiding(x->primaryStage.show());
 		primaryStage.setOnShown(x->mainController.getMenuPaneController().createProcessInfoWindow());
 	}
-
 	public void createLogInWindow() {
 		Parent parent = null;
         try {
@@ -54,4 +53,5 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.show();
 	}
+
 }

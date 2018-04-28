@@ -42,7 +42,7 @@ public class LogInPaneController implements Initializable{
 		}
 	}); 
 	}
-	
+		
 	public void configAddLogInInfo() {
 		String exception = null;
 		ProcessInfo procInfo = Main.mainController.processInfo;

@@ -53,7 +53,7 @@ public class Lathe extends Procedure {
 		time = ((latheLength + idleTrack) / (feed * rpm)) * i;
 		return time;
 	}
-	public double timeOfLatheTransver() {			//obliczanie czasu toczenia poprzecznego
+	public double timeOfLatheTransver() {			//obliczanie czasu toczenia poprzecznego [min]
 		double time = -1;
 		double i = Math.ceil((latheLength / depthOfCut)); 
 		time = (((diameterBefore/2) + idleTrack) / (feed * rpm)) * i;
@@ -62,7 +62,7 @@ public class Lathe extends Procedure {
 
 	public double costOfLathe(double time) {
 		double cost = -1;
-		cost = costPerHour * time;
+		cost = (costPerHour/60) * time;			//koszt godzinny przeliczany na 1 minute
 		return cost;
 	}
 
