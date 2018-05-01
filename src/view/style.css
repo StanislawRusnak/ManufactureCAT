@@ -1,14 +1,28 @@
-#loadButton{
-	-fx-background-image:url("../res/loadButton.png"); 
+#loadShortMenuItem{
+	-fx-background-image:url("../res/icons/loadButton.png");}
+#saveShortMenuItem{
+	-fx-background-image:url("../res/icons/saveButton.png");}
+#printShortMenuItem{
+	-fx-background-image:url("../res/icons/printButton.png");}
+#latheShortMenuItem{
+	-fx-background-image:url("../res/icons/latheButton.png");}
+#drillShortMenuItem{
+	-fx-background-image:url("../res/icons/drillButton.png");}
+#grindShortMenuItem{
+	-fx-background-image:url("../res/icons/grindButton.png");}
+#otherShortMenuItem{
+	-fx-background-image:url("../res/icons/otherButton.png");}
+	
+.button{
 	-fx-background-repeat: no-repeat;
     -fx-background-position: center;
 	-fx-background-size: 70% 70%;
 	-fx-background-color: transparent;
-    -fx-opacity: 40%;
+    -fx-opacity: 100%;
 }
-#loadButton:hover {
+.button:hover {
     -fx-opacity: 60%;
 }
-#loadButton:pressed {
-    -fx-opacity: 100%;
+.button:pressed {
+    -fx-opacity: 20%;
 }

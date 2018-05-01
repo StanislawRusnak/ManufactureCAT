@@ -57,7 +57,7 @@ public class MenuPaneController implements Initializable {
     private MenuItem drillMenuitem;
 
     @FXML
-    private MenuItem cutMenuItem;
+    private MenuItem grindMenuItem;
 
     @FXML
     private MenuItem otherMenuItem;
@@ -107,6 +107,10 @@ public class MenuPaneController implements Initializable {
         deleteProcedureMItem.setOnAction(x -> main.contentPaneController.getAndDeleteProcedure());
         editMenuItem.setOnAction(x -> createProcessInfoWindow());
         drillMenuitem.setOnAction(x -> createDrillWindow());
+        grindMenuItem.setOnAction(x -> createGrindWindow());
+        otherMenuItem.setOnAction(x -> createOtherWindow());
+        
+        
     }
 	public void init(MainController mainController) {
 		main = mainController;
@@ -166,6 +170,48 @@ public class MenuPaneController implements Initializable {
         Scene scene = new Scene(mainLayout);
         Stage stage = new Stage();
         stage.setTitle("Dodawanie zabiegu wiercenia");
+        stage.setScene(scene);
+        stage.show();
+        
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return windowController;
+	}
+	
+	public GrindAddPaneController createGrindWindow() {
+		GrindAddPaneController windowController = null;
+		BorderPane mainLayout;
+        try {
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(getClass().getResource("/view/GrindAddPane.fxml"));
+        	mainLayout = loader.load();
+        	windowController = loader.getController();
+        
+        Scene scene = new Scene(mainLayout);
+        Stage stage = new Stage();
+        stage.setTitle("Dodawanie zabiegu szlifowania");
+        stage.setScene(scene);
+        stage.show();
+        
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return windowController;
+	}
+	
+	public OtherAddPaneController createOtherWindow() {
+		OtherAddPaneController windowController = null;
+		BorderPane mainLayout;
+        try {
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(getClass().getResource("/view/OtherAddPane.fxml"));
+        	mainLayout = loader.load();
+        	windowController = loader.getController();
+        
+        Scene scene = new Scene(mainLayout);
+        Stage stage = new Stage();
+        stage.setTitle("Dodawanie innego zabiegu");
         stage.setScene(scene);
         stage.show();
         

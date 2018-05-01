@@ -25,7 +25,7 @@
 							<items>
 								<MenuItem fx:id="latheMenuItem" mnemonicParsing="false" text="Toczenie" />
 								<MenuItem fx:id="drillMenuitem" mnemonicParsing="false" text="Wiercenie" />
-								<MenuItem fx:id="cutMenuItem" mnemonicParsing="false" text="Cięcie" />
+								<MenuItem fx:id="grindMenuItem" mnemonicParsing="false" text="Szlifowanie" />
 								<MenuItem fx:id="otherMenuItem" mnemonicParsing="false" text="Inny zabieg" />
                         <MenuItem fx:id="deleteProcedureMItem" mnemonicParsing="false" text="Usuń zabieg" />
 							</items>

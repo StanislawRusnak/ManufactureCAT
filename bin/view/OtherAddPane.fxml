@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="grindPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OtherAddPaneController">
+	<center>
+		<VBox alignment="CENTER" prefHeight="363.0" prefWidth="345.0" spacing="10.0" BorderPane.alignment="CENTER">
+			<children>
+				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="167.0">
+					<children>
+						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="120.0" text="Typ zabiegu:" wrapText="true">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</Label>
+                  <TextField fx:id="otherType" prefHeight="26.0" prefWidth="206.0" promptText="Podaj nazwę" style="-fx-background-radius: 10;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+					</children>
+					<padding>
+						<Insets top="10.0" />
+					</padding>
+				</HBox>
+				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0">
+					<children>
+						<Label lineSpacing="10.0" prefWidth="120.0" text="Obrabiarka:" wrapText="true">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</Label>
+						<TextField fx:id="otherMachine" prefHeight="26.0" prefWidth="206.0" promptText="Podaj nazwę" style="-fx-background-radius: 10;">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</TextField>
+					</children>
+				</HBox>
+				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="280.0">
+					<children>
+						<Label lineSpacing="10.0" prefWidth="140.0" text="Koszt zabiegu [zł/h]:" wrapText="true">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</Label>
+						<TextField fx:id="otherCost" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</TextField>
+					</children>
+				</HBox>
+						<Separator prefHeight="14.0" prefWidth="316.0" />
+            <Label alignment="TOP_CENTER" text="Parametry zabiegu">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="147.0" spacing="5.0">
+					<children>
+						<Label fx:id="repsLabel" prefWidth="190.0" text="Czas główny zabiegu [min]:" wrapText="true">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</Label>
+						<TextField fx:id="otherTime" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets />
+							</HBox.margin>
+						</TextField>
+					</children>
+				</HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="344.0" spacing="5.0">
+               <children>
+                  <Label prefWidth="180.0" text="Czas pomocniczy [min]:" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="additionalTimeOther" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="116.0" text="Inne parametry:" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="otherParametersArea" prefHeight="150.0" prefWidth="210.0" />
+               </children>
+            </HBox>
+			</children>
+		</VBox>
+	</center>
+	<right>
+		<ImageView fitHeight="332.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+			<BorderPane.margin>
+				<Insets left="10.0" right="10.0" />
+			</BorderPane.margin>
+         <image>
+            <Image url="@../res/zabiegOgolny.PNG" />
+         </image>
+		</ImageView>
+	</right>
+	<top>
+		<Label text="Informacje o zabiegu" BorderPane.alignment="CENTER">
+			<font>
+				<Font name="System Italic" size="19.0" />
+			</font>
+		</Label>
+	</top>
+	<bottom>
+		<Button fx:id="addOtherProcedure" mnemonicParsing="false" prefHeight="26.0" prefWidth="306.0" text="Dodaj zabieg" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </BorderPane.margin></Button>
+	</bottom>
+   <padding>
+      <Insets left="10.0" top="10.0" />
+   </padding>
+</BorderPane>

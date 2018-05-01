@@ -33,11 +33,6 @@ public class LogInPaneController implements Initializable{
 		public void handle(KeyEvent event) {
 			if(event.getCode() == KeyCode.ENTER) {
 				configAddLogInInfo();
-				try {
-					event.wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 	}); 

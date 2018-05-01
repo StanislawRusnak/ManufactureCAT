@@ -47,26 +47,26 @@ public class Lathe extends Procedure {
 		setTime(timeOfLatheTransver()+getAdditionalTime());
 		setCost(costOfLathe(timeOfLatheTransver()));
 	}
-	public double timeOfLatheLongit() {				//obliczanie czasu toczenia wzd³u¿nego
+	private double timeOfLatheLongit() {				//obliczanie czasu toczenia wzd³u¿nego
 		double time = -1;
 		double i = Math.ceil(((diameterBefore - diameterAfter) / depthOfCut)); //zaokr¹glenie liczby przejœæ do ca³kowitych w góre
 		time = ((latheLength + idleTrack) / (feed * rpm)) * i;
 		return time;
 	}
-	public double timeOfLatheTransver() {			//obliczanie czasu toczenia poprzecznego [min]
+	private double timeOfLatheTransver() {			//obliczanie czasu toczenia poprzecznego [min]
 		double time = -1;
 		double i = Math.ceil((latheLength / depthOfCut)); 
 		time = (((diameterBefore/2) + idleTrack) / (feed * rpm)) * i;
 		return time;
 	}
 
-	public double costOfLathe(double time) {
+	private double costOfLathe(double time) {
 		double cost = -1;
 		cost = (costPerHour/60) * time;			//koszt godzinny przeliczany na 1 minute
 		return cost;
 	}
 
-	public String toStringLongit() {
+	private String toStringLongit() {
 		return  "Œrednica pocz¹tkowa: " + diameterBefore +" [mm]"+ 
 				"\nŒrednica koñcowa: " + diameterAfter +" [mm]"+ 
 				"\nD³ugoœæ toczenia: " + latheLength +" [mm]"+ 
@@ -76,7 +76,7 @@ public class Lathe extends Procedure {
 				"\nPrêdkoœæ obr. wrzeciona: "+ rpm +" [obr/min]"+
 				"\nCzas pomocniczy: "+ getAdditionalTime() +" [min]";
 	}
-	public String toStringTransver() {
+	private String toStringTransver() {
 		return  "Œrednica pocz¹tkowa: " + diameterBefore +" [mm]"+  
 				"\nD³ugoœæ toczenia: " + latheLength +" [mm]"+ 
 				"\nDroga ja³owa: " + idleTrack +" [mm]"+
@@ -132,5 +132,5 @@ public class Lathe extends Procedure {
 	}
 	public void setCostPerHour(double costPerHour) {
 		this.costPerHour = costPerHour;
-	}
+	} 
 }

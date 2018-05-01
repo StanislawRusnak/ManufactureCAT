@@ -45,11 +45,7 @@ public class ProcessInfoController implements Initializable {
 		public void handle(KeyEvent event) {
 			if(event.getCode() == KeyCode.ENTER) {
 				configAddProcessInfo();
-				try {
-					event.wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+
 			}
 		}
 	}); 
