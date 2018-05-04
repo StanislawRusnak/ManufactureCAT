@@ -20,23 +20,23 @@ public class GrindAddPaneController implements Initializable {
 	@FXML
 	private BorderPane grindPane;
 	@FXML
-	private ComboBox<String> grindType;
+	protected ComboBox<String> grindType;
 	@FXML
-	private TextField grindMachine;
+	protected TextField grindMachine;
 	@FXML
-	private TextField grindCost;
+	protected TextField grindCost;
 	@FXML
-	private TextField grindFeed;
+	protected TextField grindFeed;
 	@FXML
-	private TextField grindRpm;
+	protected TextField grindRpm;
 	@FXML
-	private TextField grindSurplus;
+	protected TextField grindSurplus;
 	@FXML
-	private TextField grindLength;
+	protected TextField grindLength;
 	@FXML
-	private TextField grindWidth;
+	protected TextField grindWidth;
 	@FXML
-	private TextField grindReps;
+	protected TextField grindReps;
     @FXML
     private Label repsLabel;
     @FXML
@@ -46,11 +46,11 @@ public class GrindAddPaneController implements Initializable {
     @FXML
     private Label surplusLabel;
 	@FXML
-	private TextField additionalTimeGrind;
+	protected TextField additionalTimeGrind;
 	@FXML
 	private ImageView helpImageGrind;
 	@FXML
-	private Button addGrindProcedure;
+	protected Button addGrindProcedure;
 	
 	private Stage grindStage;
     private static final String TRANSVE_GRIND = "Szlifowanie wg³êbne";
@@ -98,7 +98,7 @@ public class GrindAddPaneController implements Initializable {
 		}
 	}
 	
-	private Procedure createGrindObject() {
+	protected Procedure createGrindObject() {
 		Procedure grind = null;
 		if(grindType.getValue() == LONGIT_GRIND) {
 			grind = new Grind(Double.parseDouble(grindRpm.getText()),

@@ -20,27 +20,27 @@ public class DrillAddPaneController implements Initializable {
 	@FXML
 	private BorderPane drillPane;
 	@FXML
-	private ComboBox<String> drillType;
+	protected ComboBox<String> drillType;
 	@FXML
-	private TextField drillMachine;
+	protected TextField drillMachine;
 	@FXML
-	private TextField drillCost;
+	protected TextField drillCost;
 	@FXML
-	private TextField drillDiameter;
+	protected TextField drillDiameter;
 	@FXML
-	private TextField drillLength;
+	protected TextField drillLength;
 	@FXML
-	private TextField drillIdlePath;
+	protected TextField drillIdlePath;
 	@FXML
-	private TextField drillFeed;
+	protected TextField drillFeed;
 	@FXML
-	private TextField drillRpm;
+	protected TextField drillRpm;
 	@FXML
-	private TextField additionalTimeDrill;
+	protected TextField additionalTimeDrill;
 	@FXML
 	private ImageView helpImageDrill;
 	@FXML
-	private Button addDrillProcedure;
+	protected Button addDrillProcedure;
 
 	private Stage drillStage;
 	public static final String CLOSE_DRILLING = "Wiercenie nieprzelotowe";

@@ -73,4 +73,60 @@ public class Grind extends Procedure{
 				"\nPrêdkoœæ obr. przedmiotu: "+ rpm +" [obr/min]"+
 				"\nCzas pomocniczy: "+ getAdditionalTime() +" [min]";
 	}
+
+	public double getSurplus() {
+		return surplus;
+	}
+
+	public void setSurplus(double surplus) {
+		this.surplus = surplus;
+	}
+
+	public double getRpm() {
+		return rpm;
+	}
+
+	public void setRpm(double rpm) {
+		this.rpm = rpm;
+	}
+
+	public double getFeed() {
+		return feed;
+	}
+
+	public void setFeed(double feed) {
+		this.feed = feed;
+	}
+
+	public double getGrindLength() {
+		return grindLength;
+	}
+
+	public void setGrindLength(double grindLength) {
+		this.grindLength = grindLength;
+	}
+
+	public double getGrindWidth() {
+		return grindWidth;
+	}
+
+	public void setGrindWidth(double grindWidth) {
+		this.grindWidth = grindWidth;
+	}
+
+	public int getGrindReps() {
+		return grindReps;
+	}
+
+	public void setGrindReps(int grindReps) {
+		this.grindReps = grindReps;
+	}
+
+	public double getCostPerHour() {
+		return costPerHour;
+	}
+
+	public void setCostPerHour(double costPerHour) {
+		this.costPerHour = costPerHour;
+	}
 }

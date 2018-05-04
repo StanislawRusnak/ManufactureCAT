@@ -79,7 +79,7 @@
             </Label>
 				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="147.0" spacing="5.0">
 					<children>
-						<Label fx:id="repsLabel" prefWidth="190.0" text="Czas główny zabiegu [min]:" wrapText="true">
+						<Label prefWidth="190.0" text="Czas główny zabiegu [min]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>

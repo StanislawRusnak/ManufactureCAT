@@ -48,4 +48,52 @@ public class Drill extends Procedure {
 				"\nPrêdkoœæ obr. wrzeciona: "+ rpm +" [obr/min]"+
 				"\nCzas pomocniczy: "+ getAdditionalTime() +" [min]";
 	}
+
+	public double getDiameterAfter() {
+		return diameterAfter;
+	}
+
+	public void setDiameterAfter(double diameterAfter) {
+		this.diameterAfter = diameterAfter;
+	}
+
+	public double getDrillLength() {
+		return drillLength;
+	}
+
+	public void setDrillLength(double drillLength) {
+		this.drillLength = drillLength;
+	}
+
+	public double getFeed() {
+		return feed;
+	}
+
+	public void setFeed(double feed) {
+		this.feed = feed;
+	}
+
+	public double getIdlePath() {
+		return idlePath;
+	}
+
+	public void setIdlePath(double idlePath) {
+		this.idlePath = idlePath;
+	}
+
+	public double getRpm() {
+		return rpm;
+	}
+
+	public void setRpm(double rpm) {
+		this.rpm = rpm;
+	}
+
+	public double getCostPerHour() {
+		return costPerHour;
+	}
+
+	public void setCostPerHour(double costPerHour) {
+		this.costPerHour = costPerHour;
+	}
 }

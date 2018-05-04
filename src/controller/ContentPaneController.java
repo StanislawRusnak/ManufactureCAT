@@ -21,7 +21,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import main.Main;
+import procedure.Drill;
+import procedure.Grind;
 import procedure.Lathe;
+import procedure.Other;
 import procedure.Procedure;
 
 public class ContentPaneController implements Initializable {
@@ -38,6 +42,8 @@ public class ContentPaneController implements Initializable {
 	public TableView<Procedure> getContentTable() {
 		return contentTable;
 	}
+	private int index = 0;
+	Procedure selected = null;
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -100,6 +106,8 @@ public class ContentPaneController implements Initializable {
 
 			@Override
 			public void handle(MouseEvent event) {
+				index = contentTable.getSelectionModel().getSelectedIndex();
+				selected = main.collection.getProcedureList().get(index);
 				if(event.getClickCount() == 5) {
 					Alert alert = new Alert(AlertType.WARNING,
 							"Panieee, wez pan zostaw t¹ myszke w spokoju !\nNie mêcz jej ! " , ButtonType.OK);
@@ -107,20 +115,26 @@ public class ContentPaneController implements Initializable {
 					if (alert.getResult() == ButtonType.OK) {
 						alert.close();
 						}
-				} else if(event.getClickCount() == 2) {
+				} else if(event.getClickCount() == 2 && selected instanceof Lathe) {
 					editLatheProcedure();
+				}else if(event.getClickCount() == 2 && selected instanceof Drill) {
+					editDrillProcedure();
+				}else if(event.getClickCount() == 2 && selected instanceof Grind) {
+					editGrindProcedure();
+				}else if(event.getClickCount() == 2 && selected instanceof Other) {
+					editOtherProcedure();
+				}else if(event.getClickCount() == 2 && selected instanceof Procedure) {
+					Main.mainController.menuPaneController.createProcessInfoWindow();
 				}
 			}
 		});
 	}
 	protected void getAndDeleteProcedure() {
-		int index = contentTable.getSelectionModel().getSelectedIndex();
 		main.collection.getProcedureList().remove(index);
 	}
 	private void editLatheProcedure() {
 		Lathe editedProcedure;
-		int index = contentTable.getSelectionModel().getSelectedIndex();
-		editedProcedure = (Lathe) main.collection.getProcedureList().get(index);
+		editedProcedure = (Lathe) selected;
 		LatheAddPaneController latheAddPaneContr = main.menuPaneController.createLatheWindow();
 		//kopiowanie pól starego zabiegu do okna edytowania
 		latheAddPaneContr.additionalTime.setText(String.valueOf(editedProcedure.getAdditionalTime()));
@@ -137,7 +151,6 @@ public class ContentPaneController implements Initializable {
 		
 		//po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce nowego w kolekcji
 		latheAddPaneContr.addProcedure.setOnAction(new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent event) {
 				String exception = null;
@@ -156,6 +169,114 @@ public class ContentPaneController implements Initializable {
 			}
 		});
 	}
+	
+	private void editDrillProcedure() {
+		Drill editedProcedure;
+		editedProcedure = (Drill) selected;
+		DrillAddPaneController drillAddPaneContr = main.menuPaneController.createDrillWindow();
+		//kopiowanie pól starego zabiegu do okna edytowania
+		drillAddPaneContr.drillDiameter.setText(String.valueOf(editedProcedure.getDiameterAfter()));
+		drillAddPaneContr.drillLength.setText(String.valueOf(editedProcedure.getDrillLength()));
+		drillAddPaneContr.drillFeed.setText(String.valueOf(editedProcedure.getFeed()));
+		drillAddPaneContr.drillIdlePath.setText(String.valueOf(editedProcedure.getIdlePath()));
+		drillAddPaneContr.drillRpm.setText(String.valueOf(editedProcedure.getRpm()));
+		drillAddPaneContr.drillCost.setText(String.valueOf(editedProcedure.getCostPerHour()));
+		drillAddPaneContr.drillType.setValue(String.valueOf(editedProcedure.getType()));
+		drillAddPaneContr.drillMachine.setText(String.valueOf(editedProcedure.getMachine()));
+		drillAddPaneContr.additionalTimeDrill.setText(String.valueOf(editedProcedure.getAdditionalTime()));
+
+		//po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce nowego w kolekcji
+		drillAddPaneContr.addDrillProcedure.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String exception = null;
+				try {
+					main.collection.getProcedureList().remove(editedProcedure);
+					main.collection.getProcedureList().add(index, drillAddPaneContr.createDrillObject());
+				} catch (Exception e) {
+					exception = e.getMessage();
+					main.generateDataWarning(e);
+				}
+				if (exception == null) {
+					Stage stage;
+					stage = (Stage) drillAddPaneContr.drillFeed.getScene().getWindow();
+					stage.close();
+				}	
+			}
+		});
+	} 
+	
+	private void editGrindProcedure() {
+		Grind editedProcedure;
+		editedProcedure = (Grind) selected;
+		GrindAddPaneController grindAddPaneContr = main.menuPaneController.createGrindWindow();
+		//kopiowanie pól starego zabiegu do okna edytowania
+		grindAddPaneContr.grindRpm.setText(String.valueOf(editedProcedure.getRpm()));
+		grindAddPaneContr.grindFeed.setText(String.valueOf(editedProcedure.getFeed()));
+		grindAddPaneContr.grindLength.setText(String.valueOf(editedProcedure.getGrindLength()));
+		grindAddPaneContr.grindWidth.setText(String.valueOf(editedProcedure.getGrindWidth()));
+		grindAddPaneContr.grindReps.setText(String.valueOf(editedProcedure.getGrindReps()));
+		grindAddPaneContr.grindCost.setText(String.valueOf(editedProcedure.getCostPerHour()));
+		grindAddPaneContr.grindType.setValue(String.valueOf(editedProcedure.getType()));
+		grindAddPaneContr.grindMachine.setText(String.valueOf(editedProcedure.getMachine()));
+		grindAddPaneContr.additionalTimeGrind.setText(String.valueOf(editedProcedure.getAdditionalTime()));
+		grindAddPaneContr.grindSurplus.setText(String.valueOf(editedProcedure.getSurplus()));
+
+
+		//po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce nowego w kolekcji
+		grindAddPaneContr.addGrindProcedure.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String exception = null;
+				try {
+					main.collection.getProcedureList().remove(editedProcedure);
+					main.collection.getProcedureList().add(index, grindAddPaneContr.createGrindObject());
+				} catch (Exception e) {
+					exception = e.getMessage();
+					main.generateDataWarning(e);
+				}
+				if (exception == null) {
+					Stage stage;
+					stage = (Stage) grindAddPaneContr.grindFeed.getScene().getWindow();
+					stage.close();
+				}	
+			}
+		});
+	} 
+	
+	private void editOtherProcedure() {
+		Other editedProcedure;
+		editedProcedure = (Other) selected;
+		OtherAddPaneController otherAddPaneContr = main.menuPaneController.createOtherWindow();
+		//kopiowanie pól starego zabiegu do okna edytowania
+		otherAddPaneContr.otherCost.setText(String.valueOf(editedProcedure.getCostPerHour()));
+		otherAddPaneContr.otherType.setText(String.valueOf(editedProcedure.getType()));
+		otherAddPaneContr.otherMachine.setText(String.valueOf(editedProcedure.getMachine()));
+		otherAddPaneContr.additionalTimeOther.setText(String.valueOf(editedProcedure.getAdditionalTime()));
+		otherAddPaneContr.otherTime.setText(String.valueOf(editedProcedure.getMainTime()));
+		otherAddPaneContr.otherParametersArea.setText(String.valueOf(editedProcedure.getOtherParameters()));
+
+		//po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce nowego w kolekcji
+		otherAddPaneContr.addOtherProcedure.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String exception = null;
+				try {
+					main.collection.getProcedureList().remove(editedProcedure);
+					main.collection.getProcedureList().add(index, otherAddPaneContr.createOtherObject());
+				} catch (Exception e) {
+					exception = e.getMessage();
+					main.generateDataWarning(e);
+				}
+				if (exception == null) {
+					Stage stage;
+					stage = (Stage) otherAddPaneContr.otherMachine.getScene().getWindow();
+					stage.close();
+				}	
+			}
+		});
+	} 
+	
     public void init(MainController mainController) {
 		main = mainController;
 	}
