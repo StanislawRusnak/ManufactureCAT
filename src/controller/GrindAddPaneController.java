@@ -53,8 +53,8 @@ public class GrindAddPaneController implements Initializable {
 	protected Button addGrindProcedure;
 	
 	private Stage grindStage;
-    private static final String TRANSVE_GRIND = "Szlifowanie wg³êbne";
-    private static final String LONGIT_GRIND = "Szlifowanie wzd³u¿ne";
+    public static final String TRANSVE_GRIND = "Szlifowanie wg³êbne";
+    public static final String LONGIT_GRIND = "Szlifowanie wzd³u¿ne";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

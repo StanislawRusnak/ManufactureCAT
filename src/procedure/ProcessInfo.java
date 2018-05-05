@@ -14,7 +14,7 @@ public class ProcessInfo {
 	private StringProperty operatorName;		//imie i nazwisko operatora, osoby dodaj¹cej zabieg
 	private StringProperty partName;			//nazwa wykonywanego detalu/czêœci
 	private StringProperty date;				//data dodania procesu
-	private StringProperty halfProduct;			//pó³produkt
+	private StringProperty halfProduct;			//pó³fabrykat
 	private DoubleProperty halfProductCost; 	//koszt pó³fabrykatu
 	private IntegerProperty partQuantity;		//liczba sztuk do wykonania w serii
 	private double preparingTime;				//czas przygotowawczo zakoñczeniowy + czas uzupe³niajacy

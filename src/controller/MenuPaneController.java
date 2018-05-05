@@ -17,6 +17,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import main.Main;
 
 public class MenuPaneController implements Initializable {
 	@FXML
@@ -79,10 +80,10 @@ public class MenuPaneController implements Initializable {
 
     @FXML
     private MenuItem aboutMenuItem;
-	@Override
 	
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		configureMenu();
+		configureMenu();			
 	}
 	
 	private void configureMenu() {
@@ -109,8 +110,9 @@ public class MenuPaneController implements Initializable {
         drillMenuitem.setOnAction(x -> createDrillWindow());
         grindMenuItem.setOnAction(x -> createGrindWindow());
         otherMenuItem.setOnAction(x -> createOtherWindow());
-        saveMenuItem.setOnAction(x -> main.contentPaneController.exportExcel());
-        printMenuItem.setOnAction(x -> main.contentPaneController.printTable());
+        saveMenuItem.setOnAction(x -> main.exportImport.exportExcel());
+        printMenuItem.setOnAction(x -> main.exportImport.printTable());
+        loadMenuItem.setOnAction(x -> main.exportImport.importExcel());
         
         
     }
@@ -153,6 +155,7 @@ public class MenuPaneController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        stage.setOnHiding(x -> Main.mainController.sumSet()); 	//wywo³anie funkcji odœwie¿aj¹cej pola sum
         
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,7 +1,7 @@
 package procedure;
 
 public class Drill extends Procedure {
-	private double diameterAfter;		// œrednica przed skrawaniem [mm]
+	private double diameterAfter;		// œrednica po skrawaniu [mm]
 	private double drillLength;			// d³ugoœæ wiercenia powie¿chni obrabianej (mm)
 	private double feed;				// posuw (mm/obr)
 	private double idlePath; 			// droga ja³owa, l1+l2 (mm)
