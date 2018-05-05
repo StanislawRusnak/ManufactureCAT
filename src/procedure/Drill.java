@@ -22,7 +22,7 @@ public class Drill extends Procedure {
 		setParameters(toString());
 		setMachine(machine);
 		setTime(timeOfDrill()+getAdditionalTime());
-		setCost(costOfDrill(timeOfDrill()));
+		setCost(costOfDrill(getTime()));
 		
 	}
 	

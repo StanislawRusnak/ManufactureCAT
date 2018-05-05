@@ -27,7 +27,7 @@ public class Lathe extends Procedure {
 		setParameters(toStringLongit());
 		setMachine(machine);
 		setTime(timeOfLatheLongit()+getAdditionalTime());
-		setCost(costOfLathe(timeOfLatheLongit()));
+		setCost(costOfLathe(getTime()));
 	}
 	//konstruktor dla toczenia poprzecznego
 	public Lathe(double diameterBefore, double latheLength, double feed,
@@ -45,7 +45,7 @@ public class Lathe extends Procedure {
 		setParameters(toStringTransver());
 		setMachine(machine);
 		setTime(timeOfLatheTransver()+getAdditionalTime());
-		setCost(costOfLathe(timeOfLatheTransver()));
+		setCost(costOfLathe(getTime()));
 	}
 	private double timeOfLatheLongit() {				//obliczanie czasu toczenia wzd³u¿nego
 		double time = -1;

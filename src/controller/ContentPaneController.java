@@ -1,14 +1,26 @@
 package controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
@@ -19,7 +31,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Transform;
+import javafx.scene.transform.Translate;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Callback;
 import main.Main;
 import procedure.Drill;
@@ -277,6 +294,78 @@ public class ContentPaneController implements Initializable {
 		});
 	} 
 	
+	public void exportExcel() {
+		 Workbook workbook = new HSSFWorkbook();
+	        Sheet spreadsheet = workbook.createSheet("Procedures Costing");
+	        Row row = spreadsheet.createRow(0);
+	        
+	        for (int j = 0; j < contentTable.getColumns().size(); j++) {		//tworzenie nag³owkow kolumn
+	            row.createCell(j).setCellValue(contentTable.getColumns().get(j).getText());
+	        }
+
+	        for (int i = 0; i < contentTable.getItems().size(); i++) {
+	            row = spreadsheet.createRow(i + 1);
+	            for (int j = 0; j < contentTable.getColumns().size(); j++) {
+	                if(contentTable.getColumns().get(j).getCellData(i) != null) { 
+	                    row.createCell(j).setCellValue(contentTable.getColumns().get(j).getCellData(i).toString()); 
+	                }
+	                else {
+	                    row.createCell(j).setCellValue("");
+	                }   
+	            }
+
+	         
+	        }
+	       /*  int num =spreadsheet.getLastRowNum();
+	        Row info = spreadsheet.createRow(num+2);
+	         info.createCell(1).setCellValue(main.processInfo.toString());
+	         spreadsheet.createRow(num+3).createCell(2).setCellValue("Suma czasu zabiegów: "+main.timeSumField.getText());
+	         spreadsheet.createRow(num+4).createCell(2).setCellValue("Suma kosztu zabiegów: "+main.costSumField.getText());
+	         spreadsheet.createRow(num+4).createCell(2).setCellValue("Suma czasu serii: "+main.seriesTimeField.getText());
+	         spreadsheet.createRow(num+4).createCell(2).setCellValue("Suma kosztu serii: "+main.seriesCostField.getText());
+	         */
+	        FileOutputStream fileOut;
+	        FileChooser fileChooser = new FileChooser();
+	        fileChooser.getExtensionFilters().add(new ExtensionFilter("Microsoft Excel (.xls)", "*.xls"));
+	        fileChooser.setTitle("Zapisz plik");
+	        fileChooser.setInitialFileName("Podaj nazwê pliku");
+	        File savedFile = fileChooser.showSaveDialog(new Stage());
+
+	        if(savedFile != null){
+				try {
+					fileOut = new FileOutputStream(savedFile);
+					workbook.write(fileOut);
+					fileOut.flush();
+		            fileOut.close();
+				    workbook.close();
+				} catch (IOException e) {
+					System.out.println("Exception appear during xls creating");
+					e.printStackTrace();
+				}
+            }
+	}
+	
+	public void printTable() {
+		Node node = main.allWindow;
+	    Printer printer = Printer.getDefaultPrinter();
+	    PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, 
+	    						Printer.MarginType.HARDWARE_MINIMUM);
+	    PrinterJob job = PrinterJob.createPrinterJob();
+	    double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
+	    double scaleY = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
+	    Scale scale = new Scale(scaleX, scaleY);
+	    Transform tr = new Translate(0,-140);
+	    node.getTransforms().addAll(scale,tr);
+	   
+	    if (job != null && job.showPrintDialog(node.getScene().getWindow())) {
+	      boolean success = job.printPage(pageLayout, node);
+	      if (success) {
+	      job.endJob();
+	      }
+	    } 
+	    node.getTransforms().removeAll(scale,tr);
+	}
+
     public void init(MainController mainController) {
 		main = mainController;
 	}

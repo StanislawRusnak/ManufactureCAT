@@ -109,6 +109,8 @@ public class MenuPaneController implements Initializable {
         drillMenuitem.setOnAction(x -> createDrillWindow());
         grindMenuItem.setOnAction(x -> createGrindWindow());
         otherMenuItem.setOnAction(x -> createOtherWindow());
+        saveMenuItem.setOnAction(x -> main.contentPaneController.exportExcel());
+        printMenuItem.setOnAction(x -> main.contentPaneController.printTable());
         
         
     }

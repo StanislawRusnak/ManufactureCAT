@@ -23,7 +23,7 @@ public class Grind extends Procedure{
 		setParameters(toStringLongit());
 		setMachine(machine);
 		setTime(timeOfGrindLongit()+getAdditionalTime());
-		setCost(costOfGrind(timeOfGrindLongit()));
+		setCost(costOfGrind(getTime()));
 	}
 
 	//konstruktor dla szlifowania poprzecznego
@@ -38,7 +38,7 @@ public class Grind extends Procedure{
 		setParameters(toStringTransver());
 		setMachine(machine);
 		setTime(timeOfGrindTransver()+getAdditionalTime());
-		setCost(costOfGrind(timeOfGrindTransver()));
+		setCost(costOfGrind(getTime()));
 	}
 	
 	private double timeOfGrindLongit() {				//obliczanie czasu szlifowania wzd³u¿nego

@@ -10,6 +10,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert.AlertType;
 import procedure.Lathe;
 import procedure.Procedure;
@@ -27,15 +28,17 @@ public class MainController implements Initializable {
 	@FXML
 	protected ControlPaneController controlPaneController;
 	@FXML
-	private TextField timeSumField;
+	protected TextField timeSumField;
 	@FXML
-	private TextField costSumField;
+	protected TextField costSumField;
 	@FXML
-	private TextField seriesCostField;
+	protected TextField seriesCostField;
 	@FXML
-	private TextField seriesTimeField;
+	protected TextField seriesTimeField;
 	@FXML
 	private TextArea processInfoField;
+	@FXML
+	protected VBox allWindow;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -50,6 +53,11 @@ public class MainController implements Initializable {
 		TableView<Procedure> contentTable = contentPaneController.getContentTable();
 		Procedure lathe1 = new Lathe(444, 333, 222, 5, 4, 3, 1222, 34, "Toczenie zewnêtrzne", "tokarka1",2);
 		collection.addProcedure(halfProduct);
+		collection.addProcedure(lathe1);
+		collection.addProcedure(lathe1);
+		collection.addProcedure(lathe1);
+		collection.addProcedure(lathe1);
+		collection.addProcedure(lathe1);
 		collection.addProcedure(lathe1);
 		contentTable.setItems(collection.getProcedureList());	
 	}
