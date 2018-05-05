@@ -1,5 +1,4 @@
 package controller;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,6 +21,7 @@ import javafx.print.Paper;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.control.TableView;
 import javafx.scene.transform.Scale;
 import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
@@ -121,12 +121,12 @@ public class ExportImport {
 			}
 		}
 		last = prList.size() + 4;
-		spreadsheet.createRow(last).setRowStyle(style);// tworzenie paska oddzielajacego od podsumowania
-		spreadsheet.createRow(last - 1).createCell(0); // tworzenie pustej komórki pod zabiegami w dla metody
-														// wczytujacej
-		spreadsheet.createRow(last).createCell(0); // tworzenie pustej komórki pod zabiegami w dla metody wczytujacej
-													// (bez niej >nullpointer
-
+		Row empty = spreadsheet.createRow(last); 
+		empty.setRowStyle(style);				// tworzenie paska oddzielajacego od podsumowania
+		empty.createCell(0).setCellStyle(style);		// tworzenie pustej komórki pod zabiegami w dla metody wczytujacej
+		spreadsheet.createRow(last - 1).createCell(0); // tworzenie pustej komórki bia³ej pod zabiegami w dla metody
+														// wczytujacej (bez niej >nullpointer)
+		
 		Row sumRow = spreadsheet.createRow(last + 1); // wiersz sumy czasów i kosztów obliczone
 		sumRow.createCell(0).setCellValue("Czas sumaryczny 1szt [min]: " + main.timeSumField.getText());
 		sumRow.createCell(1).setCellValue("Koszt sumaryczny 1szt [z³]: " + main.costSumField.getText());
@@ -276,25 +276,41 @@ public class ExportImport {
 
 	public void printTable() {
 		Node node = main.allWindow;
+		TableView<Procedure> table = main.contentPaneController.getContentTable();
 		Printer printer = Printer.getDefaultPrinter();
 		PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE,
-				Printer.MarginType.HARDWARE_MINIMUM);
+				Printer.MarginType.DEFAULT);
 		PrinterJob job = PrinterJob.createPrinterJob();
 		double scaleX = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
 		double scaleY = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
 		Scale scale = new Scale(scaleX, scaleY);
 		Transform tr = new Translate(0, -140);
 		node.getTransforms().addAll(scale, tr);
-
+		
+		double scaleTableX = pageLayout.getPrintableWidth() / table.getBoundsInParent().getWidth();
+		double scaleTableY = pageLayout.getPrintableHeight() / table.getBoundsInParent().getHeight();
+		Scale scaleTable = new Scale(scaleTableX, scaleTableY);
+		table.getSelectionModel().clearSelection();
+		
 		if (job != null && job.showPrintDialog(node.getScene().getWindow())) {
 			boolean success = job.printPage(pageLayout, node);
+			
+			if(table.lookup(".scroll-bar:vertical").isVisible() ) {
+				table.scrollTo(table.getItems().size());
+				table.getTransforms().addAll(scaleTable);
+				success = job.printPage(pageLayout, table);
+			}
 			if (success) {
 				job.endJob();
 			}
 		}
 		node.getTransforms().removeAll(scale, tr);
-	}
+		table.getTransforms().removeAll(scaleTable);
 
+	
+		
+	}
+	
 	public void init(MainController mainController) {
 		main = mainController;
 
