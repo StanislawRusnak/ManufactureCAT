@@ -57,10 +57,8 @@ public class LatheAddPaneController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		latheType.getItems().addAll(OUTER_LATHE,INNER_LATHE,TRANSVE_LATHE);
-		Button latheAdd = addProcedure;
-		latheAdd.setOnAction(x -> configureLatheAdd());
+		addProcedure.setOnAction(x -> configureLatheAdd());
 		latheType.setOnAction(x -> loadLatheType());
-		
 	}
 
 	private void loadLatheType() {

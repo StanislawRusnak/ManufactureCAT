@@ -35,7 +35,8 @@ public class ProcessInfoController implements Initializable {
 
     @FXML
     private Button addInfo;
-    
+	private ProcessInfo procInfo = Main.mainController.processInfo;
+	private Procedure halfProductObject = Main.mainController.halfProduct;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -53,9 +54,6 @@ public class ProcessInfoController implements Initializable {
 
 	public void configAddProcessInfo() {
 		String exception = null;
-		ProcessInfo procInfo = Main.mainController.processInfo;
-		Procedure halfProductObject = Main.mainController.halfProduct;
-		
 		try {
 			procInfo.setPartName(partName.getText());
 			procInfo.setPartQuantity(Integer.parseInt(partQuantity.getText()));
@@ -73,6 +71,14 @@ public class ProcessInfoController implements Initializable {
 			Stage stage= (Stage) partName.getScene().getWindow();
 			stage.close();
 		}
+	}
+	
+	public void getProcessInfo() {
+			partName.setText(procInfo.getPartName());
+			partQuantity.setText(String.valueOf(procInfo.getPartQuantity()));
+			preparingTimeField.setText(String.valueOf(procInfo.getPreparingTime()));
+			halfProduct.setText(procInfo.getHalfProduct());
+			halfProductCost.setText(String.valueOf(procInfo.getHalfProductCost()));
 	}
 }
 

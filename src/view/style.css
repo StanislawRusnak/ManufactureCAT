@@ -12,6 +12,10 @@
 	-fx-background-image:url("../res/icons/grindButton.png");}
 #otherShortMenuItem{
 	-fx-background-image:url("../res/icons/otherButton.png");}
+#costAnalysShort{
+	-fx-background-image:url("../res/icons/costButton.png");}	
+#timeAnalysShort{
+	-fx-background-image:url("../res/icons/timeButton.png");}	
 	
 .button{
 	-fx-background-repeat: no-repeat;

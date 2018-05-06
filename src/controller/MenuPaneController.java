@@ -27,61 +27,65 @@ public class MenuPaneController implements Initializable {
 	private ControlPaneController controlPaneController;
 	@FXML
 	private MenuPaneController menuPaneController;
-    @FXML
-    private Menu productMenu;
+	
+	 @FXML
+	    private Menu productMenu;
 
-    @FXML
-    private MenuItem editMenuItem;
+	    @FXML
+	    private MenuItem newMenuItem;
 
-    @FXML
-    private MenuItem saveMenuItem;
+	    @FXML
+	    private MenuItem editMenuItem;
 
-    @FXML
-    private MenuItem loadMenuItem;
+	    @FXML
+	    private MenuItem saveMenuItem;
 
-    @FXML
-    private MenuItem printMenuItem;
+	    @FXML
+	    private MenuItem loadMenuItem;
 
-    @FXML
-    private MenuItem closeMenuItem;
+	    @FXML
+	    private MenuItem printMenuItem;
 
-    @FXML
-    private Menu procedureMenu;
-    @FXML
-    private MenuItem deleteProcedureMItem;
-    @FXML
-    private MenuItem latheMenuItem;
+	    @FXML
+	    private MenuItem closeMenuItem;
 
-	public MenuItem getLatheMenuItem() {
-		return latheMenuItem;
-	}
-	@FXML
-    private MenuItem drillMenuitem;
+	    @FXML
+	    private Menu procedureMenu;
 
-    @FXML
-    private MenuItem grindMenuItem;
+	    @FXML
+	    private MenuItem latheMenuItem;
 
-    @FXML
-    private MenuItem otherMenuItem;
+	    @FXML
+	    private MenuItem drillMenuitem;
 
-    @FXML
-    private Menu optionMenu;
+	    @FXML
+	    private MenuItem grindMenuItem;
 
-    @FXML
-    private MenuItem settingsMenuItem;
+	    @FXML
+	    private MenuItem otherMenuItem;
 
-    @FXML
-    private MenuItem avaibleMenuItem;
+	    @FXML
+	    private MenuItem deleteProcedureMItem;
 
-    @FXML
-    private MenuItem editSemiMenuItem;
+	    @FXML
+	    private Menu analysMenu;
 
-    @FXML
-    private Menu helpMenu;
+	    @FXML
+	    private MenuItem costAnalysItem;
 
-    @FXML
-    private MenuItem aboutMenuItem;
-    protected Stage chartStage;
+	    @FXML
+	    private MenuItem timeAnalysItem;
+
+	    @FXML
+	    private Menu helpMenu;
+
+	    @FXML
+	    private MenuItem aboutMenuItem;
+	   
+	    String tabChoice="init";		//flaga decyduj¹ca o tym która karta zostanie otwarta w menu analys
+	
+
+    
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -108,14 +112,16 @@ public class MenuPaneController implements Initializable {
         });
     	latheMenuItem.setOnAction(x -> createLatheWindow());
         deleteProcedureMItem.setOnAction(x -> main.contentPaneController.getAndDeleteProcedure());
-        editMenuItem.setOnAction(x -> createProcessInfoWindow());
+        newMenuItem.setOnAction(x -> createProcessInfoWindow());
         drillMenuitem.setOnAction(x -> createDrillWindow());
         grindMenuItem.setOnAction(x -> createGrindWindow());
         otherMenuItem.setOnAction(x -> createOtherWindow());
         saveMenuItem.setOnAction(x -> main.exportImport.exportExcel());
         printMenuItem.setOnAction(x -> main.exportImport.printTable());
         loadMenuItem.setOnAction(x -> main.exportImport.importExcel());
-        settingsMenuItem.setOnAction(x -> createChartWindow());
+        timeAnalysItem.setOnAction(x -> {tabChoice = "time";createChartWindow(); });
+        costAnalysItem.setOnAction(x -> {tabChoice = "cost";createChartWindow(); });
+        editMenuItem.setOnAction(x -> createProcessInfoWindow().getProcessInfo());
         
         
     }
@@ -242,11 +248,14 @@ public class MenuPaneController implements Initializable {
         Stage stage = new Stage();
         stage.setTitle("Porównanie czasów i kosztów");
         stage.setScene(scene);
-        stage.show();
-        chartStage = stage;
+        stage.show();  
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 		return windowController;
+	}
+	public MenuItem getLatheMenuItem() {
+		return latheMenuItem;
 	}
 }

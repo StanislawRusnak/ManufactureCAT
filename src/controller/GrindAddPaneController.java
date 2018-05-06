@@ -61,7 +61,6 @@ public class GrindAddPaneController implements Initializable {
 		grindType.getItems().addAll(LONGIT_GRIND,TRANSVE_GRIND);
 		grindType.setOnAction(x -> loadGrindType());
 		addGrindProcedure.setOnAction(x -> configureGrindAdd());
-		
 	}
 
 	private void loadGrindType() {

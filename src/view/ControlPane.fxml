@@ -12,5 +12,7 @@
 		<Button fx:id="drillShortMenuItem" layoutX="161.0" layoutY="10.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" />
 		<Button fx:id="grindShortMenuItem" layoutX="161.0" layoutY="10.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" />
 		<Button fx:id="otherShortMenuItem" layoutX="262.0" layoutY="10.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" />
+      <Button fx:id="timeAnalysShort" layoutX="363.0" layoutY="10.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" />
+      <Button fx:id="costAnalysShort" layoutX="312.0" layoutY="10.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" />
 	</children>
 </HBox>

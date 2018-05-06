@@ -14,10 +14,11 @@
 					<menus>
 						<Menu fx:id="productMenu" mnemonicParsing="false" text="Produkt">
 							<items>
+                        <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="Nowy półfabrykat" />
 								<MenuItem fx:id="editMenuItem" mnemonicParsing="false" text="Edytuj półfabrykat" />
-								<MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Zapisz" />
-								<MenuItem fx:id="loadMenuItem" mnemonicParsing="false" text="Wczytaj" />
-								<MenuItem fx:id="printMenuItem" mnemonicParsing="false" text="Drukuj" />
+								<MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Zapisz do Excel" />
+								<MenuItem fx:id="loadMenuItem" mnemonicParsing="false" text="Wczytaj plik Excel" />
+								<MenuItem fx:id="printMenuItem" mnemonicParsing="false" text="Drukuj wycenę" />
 								<MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Zamknij" />
 							</items>
 						</Menu>
@@ -30,11 +31,10 @@
                         <MenuItem fx:id="deleteProcedureMItem" mnemonicParsing="false" text="Usuń zabieg" />
 							</items>
 						</Menu>
-						<Menu fx:id="optionMenu" mnemonicParsing="false" text="Opcje">
+						<Menu fx:id="analysMenu" mnemonicParsing="false" text="Analiza">
 							<items>
-								<MenuItem fx:id="settingsMenuItem" mnemonicParsing="false" text="Ustawienia aplikacji" />
-								<MenuItem fx:id="avaibleMenuItem" mnemonicParsing="false" text="Dostępne obrabiarki" />
-								<MenuItem fx:id="editSemiMenuItem" mnemonicParsing="false" text="Edytuj półfabrykat" />
+								<MenuItem fx:id="costAnalysItem" mnemonicParsing="false" text="Rozkład kosztów" />
+								<MenuItem fx:id="timeAnalysItem" mnemonicParsing="false" text="Rozkład czasów" />
 							</items>
 						</Menu>
 						<Menu fx:id="helpMenu" mnemonicParsing="false" text="Pomoc">
