@@ -123,9 +123,7 @@ public class ExportImport {
 		last = prList.size() + 4;
 		Row empty = spreadsheet.createRow(last); 
 		empty.setRowStyle(style);				// tworzenie paska oddzielajacego od podsumowania
-		empty.createCell(0).setCellStyle(style);		// tworzenie pustej komórki pod zabiegami w dla metody wczytujacej
-		spreadsheet.createRow(last - 1).createCell(0); // tworzenie pustej komórki bia³ej pod zabiegami w dla metody
-														// wczytujacej (bez niej >nullpointer)
+		empty.createCell(0).setCellStyle(style);														
 		
 		Row sumRow = spreadsheet.createRow(last + 1); // wiersz sumy czasów i kosztów obliczone
 		sumRow.createCell(0).setCellValue("Czas sumaryczny 1szt [min]: " + main.timeSumField.getText());
@@ -159,13 +157,17 @@ public class ExportImport {
 		FileChooser fc = new FileChooser();
 		fc.getExtensionFilters().add(new ExtensionFilter("Microsoft Excel (.xls)", "*.xls"));
 		File file = fc.showOpenDialog(new Stage());
-		prList.clear();
-		xlsParser(file); // wczytywanie zabiegów do listy
+		
+		if(file != null) {
+			prList.clear();		//czyszczenie listy zabiegów przed wczytaniem
+			xlsParser(file);    // wczytywanie zabiegów do listy
+		}
 	}
 
 	public void xlsParser(File xlsFile) {
+				
 		try (InputStream input = new FileInputStream(xlsFile)) {
-			// wczytywanie processInfo oraz pó³fabrykatu
+																//==== wczytywanie processInfo oraz pó³fabrykatu
 			Workbook workbook = WorkbookFactory.create(input);
 			Sheet prCosting = workbook.getSheetAt(0);
 			Row row = prCosting.getRow(0); // pobranie 1 wiersza z pliku excel
@@ -183,11 +185,11 @@ public class ExportImport {
 			main.collection.addProcedure(proc); // dodanie pó³fabrykatu do listy
 			main.getProcessInfo().setText(prInfo.toString()); // wpisanie do pola processInfo informacji
 
-			// wczytywanie listy zabiegów do kolekcji
+			//=================== wczytywanie listy zabiegów do kolekcji
 			int rowNum = 4; // wskazanie wiersza z pierwszym zabiegiem (pó³fabrykat to nie zabieg i by³
 							// dodany wczesniej)
 			String prType;
-			while (!prCosting.getRow(rowNum).getCell(0).getStringCellValue().isEmpty()) {
+			while (!(prCosting.getRow(rowNum) == null)) {	//!prCosting.getRow(rowNum).getCell(0).getStringCellValue().isEmpty()
 				row = prCosting.getRow(rowNum);
 				prType = trimStr(row.getCell(0).getStringCellValue());
 

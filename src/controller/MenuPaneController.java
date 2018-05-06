@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import main.Main;
@@ -80,6 +81,7 @@ public class MenuPaneController implements Initializable {
 
     @FXML
     private MenuItem aboutMenuItem;
+    protected Stage chartStage;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -113,6 +115,7 @@ public class MenuPaneController implements Initializable {
         saveMenuItem.setOnAction(x -> main.exportImport.exportExcel());
         printMenuItem.setOnAction(x -> main.exportImport.printTable());
         loadMenuItem.setOnAction(x -> main.exportImport.importExcel());
+        settingsMenuItem.setOnAction(x -> createChartWindow());
         
         
     }
@@ -220,6 +223,27 @@ public class MenuPaneController implements Initializable {
         stage.setScene(scene);
         stage.show();
         
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return windowController;
+	}
+	
+	public ChartPaneController createChartWindow() {
+		ChartPaneController windowController = null;
+		TabPane mainLayout;
+        try {
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(getClass().getResource("/view/ChartPane.fxml"));
+        	mainLayout = loader.load();
+        	windowController = loader.getController();
+        
+        Scene scene = new Scene(mainLayout);
+        Stage stage = new Stage();
+        stage.setTitle("Porównanie czasów i kosztów");
+        stage.setScene(scene);
+        stage.show();
+        chartStage = stage;
         } catch (IOException e) {
             e.printStackTrace();
         }

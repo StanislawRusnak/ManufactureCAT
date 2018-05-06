@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="D:/Eclipse/PobraneBiblioteki/excel/poi-3.17/lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="D:/Eclipse/PobraneBiblioteki/excel/poi-3.17/lib/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="D:/Eclipse/PobraneBiblioteki/excel/poi-3.17/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/PobraneBiblioteki/MultiAxisCharts.jar" sourcepath="D:/Eclipse/PobraneBiblioteki/MultiAxisCharts.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
