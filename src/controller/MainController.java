@@ -1,3 +1,4 @@
+//Created by Stanis³aw Rusnak. © Copyright. All rights reserved.
 package controller;
 
 import java.net.URL;
@@ -12,14 +13,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert.AlertType;
-import procedure.Lathe;
 import procedure.Procedure;
 import procedure.ProcedureCollection;
 import procedure.ProcessInfo;
 
 public class MainController implements Initializable {
 	protected ExportImport exportImport = new ExportImport();
-	protected ProcessInfo processInfo = new ProcessInfo("Brak", "Brak", "Brak",0.0, 0, 0);	//generowanie pustego szablonu-obiektu procesInfo
+	protected ProcessInfo processInfo = new ProcessInfo("Brak", "Brak", "Brak",0.0, 0, 0);	//creating empty processInfo object
 	ProcedureCollection collection = new ProcedureCollection();
 	Procedure halfProduct = new Procedure("Zakup pó³fabrykatu","-","-",0.0,0.0);
 	@FXML
@@ -53,9 +53,7 @@ public class MainController implements Initializable {
 	
 	public void configureTable() {
 		TableView<Procedure> contentTable = contentPaneController.getContentTable();
-		Procedure lathe1 = new Lathe(444, 333, 222, 5, 4, 3, 1222, 34, "Toczenie zewnêtrzne", "tokarka1",2);
 		collection.addProcedure(halfProduct);
-		collection.addProcedure(lathe1);
 		contentTable.setItems(collection.getProcedureList());	
 	}
 
@@ -83,13 +81,13 @@ public class MainController implements Initializable {
 	
 	public void generateDataWarning(Exception e) {
 		Alert alert = new Alert(AlertType.ERROR,
-				"Z³y format danych. Wpisz zabieg ponownie.\nPrzyczyna: " + e.getMessage(), ButtonType.OK);
+				"Z³y format danych. Popraw wprowadzone dane.\nPrzyczyna: " + e.getMessage(), ButtonType.OK);
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			alert.close();
 		}
 	}
-	public double roundUp(double number) {		//zaokr¹glanie double w górê do setnych czêœci 
+	public double roundUp(double number) {		//rounding UP to hundredth
 		number*=100;
     	number= Math.ceil(number);
     	number/=100;

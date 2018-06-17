@@ -1,12 +1,12 @@
 package procedure;
 
 public class Drill extends Procedure {
-	private double diameterAfter;		// œrednica po skrawaniu [mm]
-	private double drillLength;			// d³ugoœæ wiercenia powie¿chni obrabianej (mm)
-	private double feed;				// posuw (mm/obr)
-	private double idlePath; 			// droga ja³owa, l1+l2 (mm)
-	private double rpm; 				// obroty (obr/min)
-	private double costPerHour; 		// koszt godziny wykonywania zabiegu (zl)
+	private double diameterAfter;		// diameter after machining (mm)
+	private double drillLength;			// length of drilling (mm)
+	private double feed;				// feed of tool (mm/obr)
+	private double idlePath; 			// idle path of tool, l1+l2 (mm)
+	private double rpm; 				// rotational speed of tool (obr/min)
+	private double costPerHour; 		// cost of one hour performing the procedure (zl)
 	
 	public Drill(double diameterAfter,double drillLength,
 			double feed,double idlePath,double rpm,double costPerHour,String type,
@@ -26,7 +26,7 @@ public class Drill extends Procedure {
 		
 	}
 	
-	public double timeOfDrill() {			//obliczanie czasu wiercenia [min]
+	public double timeOfDrill() {			//calculating drilling time [min]
 		double time = -1;
 		time = (drillLength + idlePath) / (feed*rpm);
 		return time;
@@ -34,7 +34,7 @@ public class Drill extends Procedure {
 
 	public double costOfDrill(double time) {
 		double cost = -1;
-		cost = (costPerHour/60) * time;		//koszt godzinny przeliczany na 1 minute
+		cost = (costPerHour/60) * time;		//cost of one hour, converted to cost of one minute 
 		return cost;
 	}
 	

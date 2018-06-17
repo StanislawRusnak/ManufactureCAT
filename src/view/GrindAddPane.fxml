@@ -13,13 +13,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="grindPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GrindAddPaneController">
+<BorderPane fx:id="grindPane" maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0"
+	prefWidth="712.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.GrindAddPaneController">
 	<center>
 		<VBox BorderPane.alignment="CENTER">
 			<children>
 				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="167.0">
 					<children>
-						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="120.0" text="Typ zabiegu:" wrapText="true">
+						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="120.0"
+							text="Typ zabiegu:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -27,7 +31,8 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<ComboBox fx:id="grindType" prefHeight="26.0" prefWidth="229.0" promptText="Wybierz typ zabiegu" />
+						<ComboBox fx:id="grindType" prefHeight="26.0" prefWidth="229.0"
+							promptText="Wybierz typ zabiegu" />
 					</children>
 					<padding>
 						<Insets top="10.0" />
@@ -35,7 +40,8 @@
 				</HBox>
 				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="120.0" text="Obrabiarka:" wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="120.0" text="Obrabiarka:"
+							wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -43,7 +49,8 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="grindMachine" prefHeight="26.0" prefWidth="206.0" promptText="Podaj nazwę" style="-fx-background-radius: 10;">
+						<TextField fx:id="grindMachine" prefHeight="26.0"
+							prefWidth="206.0" promptText="Podaj nazwę" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -52,7 +59,8 @@
 				</HBox>
 				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="280.0">
 					<children>
-						<Label lineSpacing="10.0" prefWidth="140.0" text="Koszt zabiegu [zł/h] :" wrapText="true">
+						<Label lineSpacing="10.0" prefWidth="140.0" text="Koszt zabiegu [zł/h] :"
+							wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -60,15 +68,17 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="grindCost" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="grindCost" prefWidth="90.0"
+							promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
 						</TextField>
 					</children>
 				</HBox>
-						<Separator prefHeight="14.0" prefWidth="316.0" />
-				<Label alignment="CENTER" lineSpacing="10.0" prefHeight="18.0" prefWidth="329.0" text="Parametry techniczne zabiegu" wrapText="true">
+				<Separator prefHeight="14.0" prefWidth="316.0" />
+				<Label alignment="CENTER" lineSpacing="10.0" prefHeight="18.0"
+					prefWidth="329.0" text="Parametry techniczne zabiegu" wrapText="true">
 					<opaqueInsets>
 						<Insets />
 					</opaqueInsets>
@@ -81,7 +91,8 @@
 				</Label>
 				<HBox alignment="CENTER_LEFT" spacing="5.0">
 					<children>
-						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="180.0" text="Posuw [mm/obr]:" wrapText="true">
+						<Label lineSpacing="10.0" prefHeight="18.0" prefWidth="180.0"
+							text="Posuw [mm/obr]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -89,41 +100,29 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="grindFeed" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="grindFeed" prefWidth="90.0"
+							promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
 						</TextField>
 					</children>
 				</HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="153.0" spacing="5.0">
-               <children>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="159.0" text="Prędkość obrotowa przedmiotu [obr/min]:" wrapText="true">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="grindRpm" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TextField>
-               </children>
-            </HBox>
-				<HBox alignment="CENTER_LEFT" spacing="5.0">
+				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="153.0"
+					spacing="5.0">
 					<children>
-						<Label fx:id="surplusLabel" lineSpacing="10.0" prefWidth="190.0" text="Naddatek na obróbkę [mm]:" wrapText="true">
+						<Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+							prefHeight="55.0" prefWidth="159.0"
+							text="Prędkość obrotowa przedmiotu [obr/min]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
 							<HBox.margin>
-								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+								<Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="grindSurplus" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="grindRpm" prefWidth="90.0" promptText="Podaj wartość"
+							style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -132,7 +131,8 @@
 				</HBox>
 				<HBox alignment="CENTER_LEFT" spacing="5.0">
 					<children>
-						<Label fx:id="lengthLabel" lineSpacing="10.0" prefWidth="190.0" text="Długość obróbkowa [mm]:" textAlignment="CENTER" wrapText="true">
+						<Label fx:id="surplusLabel" lineSpacing="10.0" prefWidth="190.0"
+							text="Naddatek na obróbkę [mm]:" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -140,7 +140,8 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="grindLength" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="grindSurplus" prefWidth="90.0"
+							promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -149,7 +150,8 @@
 				</HBox>
 				<HBox alignment="CENTER_LEFT" spacing="5.0">
 					<children>
-						<Label fx:id="widthLabel" lineSpacing="10.0" prefWidth="190.0" text="Szerokość ściernicy [mm]:" textAlignment="CENTER" wrapText="true">
+						<Label fx:id="lengthLabel" lineSpacing="10.0" prefWidth="190.0"
+							text="Długość obróbkowa [mm]:" textAlignment="CENTER" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -157,16 +159,18 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="grindWidth" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="grindLength" prefWidth="90.0"
+							promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
 						</TextField>
 					</children>
 				</HBox>
-				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="147.0" spacing="5.0">
+				<HBox alignment="CENTER_LEFT" spacing="5.0">
 					<children>
-						<Label fx:id="repsLabel" prefWidth="180.0" text="Liczba przejść :" wrapText="true">
+						<Label fx:id="widthLabel" lineSpacing="10.0" prefWidth="190.0"
+							text="Szerokość ściernicy [mm]:" textAlignment="CENTER" wrapText="true">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -174,7 +178,28 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</HBox.margin>
 						</Label>
-						<TextField fx:id="grindReps" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
+						<TextField fx:id="grindWidth" prefWidth="90.0"
+							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</TextField>
+					</children>
+				</HBox>
+				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="147.0"
+					spacing="5.0">
+					<children>
+						<Label fx:id="repsLabel" prefWidth="180.0" text="Liczba przejść :"
+							wrapText="true">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</Label>
+						<TextField fx:id="grindReps" prefWidth="90.0"
+							promptText="Podaj wartość" style="-fx-background-radius: 10;">
 							<opaqueInsets>
 								<Insets />
 							</opaqueInsets>
@@ -184,38 +209,44 @@
 						</TextField>
 					</children>
 				</HBox>
-            <Separator layoutX="10.0" layoutY="103.0" prefHeight="14.0" prefWidth="316.0" />
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="344.0" spacing="5.0">
-               <children>
-                  <Label prefWidth="180.0" text="Czas pomocniczy [min]" wrapText="true">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="additionalTimeGrind" prefWidth="90.0" promptText="Podaj wartość" style="-fx-background-radius: 10;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
+				<Separator layoutX="10.0" layoutY="103.0" prefHeight="14.0"
+					prefWidth="316.0" />
+				<HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="344.0"
+					spacing="5.0">
+					<children>
+						<Label prefWidth="180.0" text="Czas pomocniczy [min]"
+							wrapText="true">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</HBox.margin>
+						</Label>
+						<TextField fx:id="additionalTimeGrind" prefWidth="90.0"
+							promptText="Podaj wartość" style="-fx-background-radius: 10;">
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+							<HBox.margin>
+								<Insets />
+							</HBox.margin>
+						</TextField>
+					</children>
+				</HBox>
 			</children>
 		</VBox>
 	</center>
 	<right>
-		<ImageView fx:id="helpImageGrind" fitHeight="386.0" fitWidth="314.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+		<ImageView fx:id="helpImageGrind" fitHeight="386.0"
+			fitWidth="314.0" pickOnBounds="true" preserveRatio="true"
+			BorderPane.alignment="CENTER">
 			<BorderPane.margin>
 				<Insets left="10.0" right="10.0" />
 			</BorderPane.margin>
-         <image>
-            <Image url="@../res/szlifowanie.PNG" />
-         </image>
+			<image>
+				<Image url="@../res/szlifowanie.PNG" />
+			</image>
 		</ImageView>
 	</right>
 	<top>
@@ -226,12 +257,15 @@
 		</Label>
 	</top>
 	<bottom>
-		<Button fx:id="addGrindProcedure" mnemonicParsing="false" prefHeight="26.0" prefWidth="306.0" text="Dodaj zabieg" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </BorderPane.margin></Button>
+		<Button fx:id="addGrindProcedure" mnemonicParsing="false"
+			prefHeight="26.0" prefWidth="306.0" text="Dodaj zabieg"
+			BorderPane.alignment="CENTER">
+			<BorderPane.margin>
+				<Insets bottom="10.0" top="10.0" />
+			</BorderPane.margin>
+		</Button>
 	</bottom>
-   <padding>
-      <Insets left="10.0" top="10.0" />
-   </padding>
+	<padding>
+		<Insets left="10.0" top="10.0" />
+	</padding>
 </BorderPane>

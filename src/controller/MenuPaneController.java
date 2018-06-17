@@ -82,10 +82,7 @@ public class MenuPaneController implements Initializable {
 	    @FXML
 	    private MenuItem aboutMenuItem;
 	   
-	    String tabChoice="init";		//flaga decyduj¹ca o tym która karta zostanie otwarta w menu analys
-	
-
-    
+	    String tabChoice="init"; //flag which decide which tab will be opened in analys menu
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -160,11 +157,11 @@ public class MenuPaneController implements Initializable {
         
         Scene scene = new Scene(mainLayout);
         Stage stage = new Stage();
-        stage.setTitle("Dodawanie podstawowych infomracji o operacji");
+        stage.setTitle("Dodawanie podstawowych informacji");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        stage.setOnHiding(x -> Main.mainController.sumSet()); 	//wywo³anie funkcji odœwie¿aj¹cej pola sum
+        stage.setOnHiding(x -> Main.mainController.sumSet()); 	//refreshing sum fields
         
         } catch (IOException e) {
             e.printStackTrace();

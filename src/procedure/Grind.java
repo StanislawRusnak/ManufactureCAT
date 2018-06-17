@@ -1,15 +1,15 @@
 package procedure;
 
 public class Grind extends Procedure{
-	private double surplus;			//naddatek obróbkowy [mm]
-	private double rpm;				//prêdkoœæ obrotowa przedmiotu szlifowanego [obr/min]
-	private double feed;			//posuw [mm/obr]
-	private double grindLength;		//d³ugoœæ do obróbki [mm]
-	private double grindWidth;		//szerokoœæ œciernicy [mm]
-	private int grindReps;			//liczba przejœæ œciernicy po przedmiocie obrabianym
-	private double costPerHour;		//koszt godziny wykonywania zabiegu [zl]
+	private double surplus;			//machining surplus [mm]
+	private double rpm;				//rotational speed of machined object [obr/min]
+	private double feed;			//feed [mm/obr]
+	private double grindLength;		//machined length [mm]
+	private double grindWidth;		//width of grinding wheel [mm]
+	private int grindReps;			// number of grinding repetations / liczba przejœæ œciernicy po przedmiocie obrabianym
+	private double costPerHour;		//cost of one hour procedure performing [zl]
 	
-	//konstruktor dla szlifowania wzd³u¿nego
+	//longitudinal grinding
 	public Grind(double rpm, double feed, double grindLength, double grindWidth, int grindReps
 				,double costPerHour,String type,String machine,double additionalTime) {
 		this.rpm = rpm;
@@ -26,7 +26,7 @@ public class Grind extends Procedure{
 		setCost(costOfGrind(getTime()));
 	}
 
-	//konstruktor dla szlifowania poprzecznego
+	//transverse grinding
 	public Grind(double surplus, double rpm, double feed, double costPerHour,String type,
 			String machine,double additionalTime) {
 		this.surplus = surplus;
@@ -41,13 +41,13 @@ public class Grind extends Procedure{
 		setCost(costOfGrind(getTime()));
 	}
 	
-	private double timeOfGrindLongit() {				//obliczanie czasu szlifowania wzd³u¿nego
+	private double timeOfGrindLongit() {				//calculating longitudinal grinding time [min]
 		double time = -1;
 		time = ((grindLength + ((1/3)*grindWidth))*grindReps)/(rpm*feed);
 		return time;
 	}
 	
-	private double timeOfGrindTransver() {				//obliczanie czasu szlifowania poprzecznego
+	private double timeOfGrindTransver() {				//calculating transverse grinding time [min]
 		double time = -1;
 		time = surplus/(rpm*feed);
 		return time;
@@ -55,7 +55,7 @@ public class Grind extends Procedure{
 	
 	private double costOfGrind(double time) {
 		double cost = -1;
-		cost = (costPerHour/60) * time;		//koszt godzinny przeliczany na 1 minute
+		cost = (costPerHour/60) * time;		//cost of one hour, converted to cost of one minute 
 		return cost;
 	}
 	

@@ -18,14 +18,15 @@ public class ProcedureCollection {
 		return procedureList;
 	}
 
-	public double sumOfTime() {
+
+	public double sumOfTime() {  	//calculating sum of times of procedures in table
 		double sumOfTime = 0;
 		for (Procedure procedure : procedureList) {
 			sumOfTime += procedure.getTime();
 		}
 		return sumOfTime;
 	}
-	public double sumOfCost() {
+	public double sumOfCost() {   	//calculating sum of costs of procedures in table
 		double sumOfCost=0;
 		for (Procedure procedure : procedureList) {
 			sumOfCost += procedure.getCost();

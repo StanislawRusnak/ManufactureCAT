@@ -86,7 +86,7 @@ public class ChartPaneController implements Initializable {
 		costTab.setContent(costPieChart);
 	}
 
-	private double calcPercent(double procedure, double sum) { // obliczanie procentowego udzia³u kosztu/czasu
+	private double calcPercent(double procedure, double sum) { //calculation of the percentage share of cost / time (obliczanie procentowego udzia³u kosztu/czasu)
 		double perc = (procedure / sum) * 100;
 		perc *= 10;
 		perc = Math.round(perc);

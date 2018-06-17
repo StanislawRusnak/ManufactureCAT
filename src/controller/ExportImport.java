@@ -47,11 +47,11 @@ public class ExportImport {
 		Row row;
 		int last;
 		Procedure tmp;
-		CellStyle style = workbook.createCellStyle(); // tworzenie stylu paskow oddzielajacych
+		CellStyle style = workbook.createCellStyle(); // creating style of separating bars
 		style.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
 		style.setFillPattern(FillPatternType.ALT_BARS);
 
-		Row prInfoRow = spreadsheet.createRow(0); // processInfoRow i wype³nianie go
+		Row prInfoRow = spreadsheet.createRow(0); // processInfoRow add filling it
 		ProcessInfo prInfo = main.processInfo;
 		prInfoRow.createCell(0).setCellValue("Nazwa czêœci: " + prInfo.getPartName());
 		prInfoRow.createCell(1).setCellValue("Seria [szt]: " + prInfo.getPartQuantity());
@@ -61,9 +61,9 @@ public class ExportImport {
 		prInfoRow.createCell(5).setCellValue("Pó³fabrykat (œr x d³ [mm]): " + prInfo.getHalfProduct());
 		prInfoRow.createCell(6).setCellValue("Koszt pó³fabrykatu [z³/szt]: " + prInfo.getHalfProductCost());
 
-		spreadsheet.createRow(1).setRowStyle(style); // pasek oddzielaj¹cy ze stylem
+		spreadsheet.createRow(1).setRowStyle(style); // separating bar
 
-		for (int i = 0; i < prList.size(); i++) { // wype³nianie tabeli list¹ zabiegow
+		for (int i = 0; i < prList.size(); i++) { // filling table by list of procedures
 			row = spreadsheet.createRow(i + 3);
 			tmp = prList.get(i);
 
@@ -122,10 +122,10 @@ public class ExportImport {
 		}
 		last = prList.size() + 4;
 		Row empty = spreadsheet.createRow(last); 
-		empty.setRowStyle(style);				// tworzenie paska oddzielajacego od podsumowania
+		empty.setRowStyle(style);				//creating a separating bar from the summary
 		empty.createCell(0).setCellStyle(style);														
 		
-		Row sumRow = spreadsheet.createRow(last + 1); // wiersz sumy czasów i kosztów obliczone
+		Row sumRow = spreadsheet.createRow(last + 1); //row of sum of  calculated costs and times / wiersz sumy czasów i kosztów obliczone
 		sumRow.createCell(0).setCellValue("Czas sumaryczny 1szt [min]: " + main.timeSumField.getText());
 		sumRow.createCell(1).setCellValue("Koszt sumaryczny 1szt [z³]: " + main.costSumField.getText());
 		sumRow.createCell(2).setCellValue("Czas wykonania serii [min]: " + main.seriesTimeField.getText());
@@ -159,21 +159,21 @@ public class ExportImport {
 		File file = fc.showOpenDialog(new Stage());
 		
 		if(file != null) {
-			prList.clear();		//czyszczenie listy zabiegów przed wczytaniem
-			xlsParser(file);    // wczytywanie zabiegów do listy
+			prList.clear();		//wiping list of procedures before loading new 
+			xlsParser(file);    // loading list of procedures
 		}
 	}
 
 	public void xlsParser(File xlsFile) {
 				
 		try (InputStream input = new FileInputStream(xlsFile)) {
-																//==== wczytywanie processInfo oraz pó³fabrykatu
+														//==== loading of processInfo and halfproduct
 			Workbook workbook = WorkbookFactory.create(input);
 			Sheet prCosting = workbook.getSheetAt(0);
-			Row row = prCosting.getRow(0); // pobranie 1 wiersza z pliku excel
+			Row row = prCosting.getRow(0); // taking first row from excel
 			ProcessInfo prInfo = main.processInfo; // przypisanie do zmiennej referencji obiektu processInfo
 			Procedure proc = main.halfProduct;
-			prInfo.setPartName(trimStr(row.getCell(0).getStringCellValue())); // wype³nianie poszczególnych pól
+			prInfo.setPartName(trimStr(row.getCell(0).getStringCellValue())); // filling fields
 			prInfo.setPartQuantity(trimInt(row.getCell(1).getStringCellValue()));
 			prInfo.setPreparingTime(trimDbl(row.getCell(2).getStringCellValue()));
 			prInfo.setOperatorName(trimStr(row.getCell(3).getStringCellValue()));
@@ -182,20 +182,20 @@ public class ExportImport {
 			prInfo.setHalfProductCost(trimDbl(row.getCell(6).getStringCellValue()));
 			proc.setParameters("Prêt okr¹g³y " + prInfo.getHalfProduct() + " [mm]");
 			proc.setCost(prInfo.getHalfProductCost());
-			main.collection.addProcedure(proc); // dodanie pó³fabrykatu do listy
-			main.getProcessInfo().setText(prInfo.toString()); // wpisanie do pola processInfo informacji
+			main.collection.addProcedure(proc); // adding half product to the list
+			main.getProcessInfo().setText(prInfo.toString()); //entering information into the processInfo field
 
-			//=================== wczytywanie listy zabiegów do kolekcji
-			int rowNum = 4; // wskazanie wiersza z pierwszym zabiegiem (pó³fabrykat to nie zabieg i by³
-							// dodany wczesniej)
+			//=================== loading list of procedures to collection 
+			int rowNum = 4; // showing row with first procedure (halfproduct is not procedure and was loaded earlier)
+			
 			String prType;
-			while (!(prCosting.getRow(rowNum) == null)) {	//!prCosting.getRow(rowNum).getCell(0).getStringCellValue().isEmpty()
+			while (!(prCosting.getRow(rowNum) == null)) {
 				row = prCosting.getRow(rowNum);
 				prType = trimStr(row.getCell(0).getStringCellValue());
 
 				if (prType.equals(LatheAddPaneController.OUTER_LATHE)
-						|| prType.equals(LatheAddPaneController.INNER_LATHE)) { // jesli w wierszu jest toczenie
-																				// zewnêtrzne lub wewnêtrzne
+						|| prType.equals(LatheAddPaneController.INNER_LATHE)) { 
+																				
 					proc = new Lathe(trimDbl(row.getCell(3).getStringCellValue()),
 							trimDbl(row.getCell(4).getStringCellValue()), trimDbl(row.getCell(5).getStringCellValue()),
 							trimDbl(row.getCell(7).getStringCellValue()), trimDbl(row.getCell(8).getStringCellValue()),
@@ -205,7 +205,7 @@ public class ExportImport {
 							trimDbl(row.getCell(10).getStringCellValue()));
 					main.collection.addProcedure(proc);
 
-				} else if (prType.equals(LatheAddPaneController.TRANSVE_LATHE)) { // toczenie poprzeczne
+				} else if (prType.equals(LatheAddPaneController.TRANSVE_LATHE)) { 
 					proc = new Lathe(trimDbl(row.getCell(3).getStringCellValue()),
 							trimDbl(row.getCell(5).getStringCellValue()), trimDbl(row.getCell(7).getStringCellValue()),
 							trimDbl(row.getCell(8).getStringCellValue()), trimDbl(row.getCell(6).getStringCellValue()),
@@ -215,8 +215,8 @@ public class ExportImport {
 					main.collection.addProcedure(proc);
 				} else if (prType.equals(DrillAddPaneController.CLOSE_DRILLING)
 						|| prType.equals(DrillAddPaneController.OPEN_DRILLING)
-						|| prType.equals(DrillAddPaneController.HOLE_DRILLING)) { // wiercenie nieprzelotowe, przelotowe
-																					// lub powiercanie
+						|| prType.equals(DrillAddPaneController.HOLE_DRILLING)) { 
+																					
 					proc = new Drill(trimDbl(row.getCell(3).getStringCellValue()),
 							trimDbl(row.getCell(4).getStringCellValue()), trimDbl(row.getCell(6).getStringCellValue()),
 							trimDbl(row.getCell(5).getStringCellValue()), trimDbl(row.getCell(7).getStringCellValue()),
@@ -224,20 +224,20 @@ public class ExportImport {
 							trimStr(row.getCell(1).getStringCellValue()), trimDbl(row.getCell(8).getStringCellValue()));
 					main.collection.addProcedure(proc);
 
-				} else if (prType.equals(GrindAddPaneController.LONGIT_GRIND)) { // szlifowanie wzd³u¿ne
+				} else if (prType.equals(GrindAddPaneController.LONGIT_GRIND)) { 
 					proc = new Grind(trimDbl(row.getCell(4).getStringCellValue()),
 							trimDbl(row.getCell(3).getStringCellValue()), trimDbl(row.getCell(6).getStringCellValue()),
 							trimDbl(row.getCell(7).getStringCellValue()), trimInt(row.getCell(8).getStringCellValue()),
 							trimDbl(row.getCell(2).getStringCellValue()), GrindAddPaneController.LONGIT_GRIND,
 							trimStr(row.getCell(1).getStringCellValue()), trimDbl(row.getCell(9).getStringCellValue()));
 					main.collection.addProcedure(proc);
-				} else if (prType.equals(GrindAddPaneController.TRANSVE_GRIND)) { // Szlifowanie wg³êbne
+				} else if (prType.equals(GrindAddPaneController.TRANSVE_GRIND)) { 
 					proc = new Grind(trimDbl(row.getCell(5).getStringCellValue()),
 							trimDbl(row.getCell(4).getStringCellValue()), trimDbl(row.getCell(3).getStringCellValue()),
 							trimDbl(row.getCell(2).getStringCellValue()), GrindAddPaneController.TRANSVE_GRIND,
 							trimStr(row.getCell(1).getStringCellValue()), trimDbl(row.getCell(9).getStringCellValue()));
 					main.collection.addProcedure(proc);
-				} else { // w innym wypadku jest to zabieg typu other (inny)
+				} else { 
 					proc = new Other(trimDbl(row.getCell(2).getStringCellValue()),
 							trimStr(row.getCell(0).getStringCellValue()), trimStr(row.getCell(1).getStringCellValue()),
 							trimDbl(row.getCell(4).getStringCellValue()), trimDbl(row.getCell(3).getStringCellValue()),

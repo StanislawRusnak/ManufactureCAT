@@ -1,9 +1,9 @@
 package procedure;
 
 public class Other extends Procedure{
-	private double costPerHour;		//koszt godziny wykonywania zabiegu [zl]
-	private double mainTime;		//czas g³ówny zabiegu [min]
-	private String otherParameters;		//inne parametry zabiegu
+	private double costPerHour;		//cost of one hour procedure performing [zl]
+	private double mainTime;		//main time of procedure [min]
+	private String otherParameters;		//other procedure parameters
 	
 	public Other(double costPerHour,String type,String machine,double additionalTime,
 				 double mainTime, String otherParameters) {
@@ -20,7 +20,7 @@ public class Other extends Procedure{
 	
 	private double costOfOther(double time) {
 		double cost = -1;
-		cost = (costPerHour/60) * time;		//koszt godzinny przeliczany na 1 minute
+		cost = (costPerHour/60) * time;		//cost of one hour, converted to cost of one minute 
 		return cost;
 	}
 	@Override

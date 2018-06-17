@@ -47,8 +47,8 @@ public class ContentPaneController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		configureTable(); // budowanie tabeli
-		configureTableEvents(); // konfiguracja usuwania i edytowania zabiegow w tabeli
+		configureTable(); // table building
+		configureTableEvents(); // configuration of deleting and editing procedures in table 
 
 	}
 
@@ -127,7 +127,7 @@ public class ContentPaneController implements Initializable {
 				} else if (event.getClickCount() == 2 && selected instanceof Other) {
 					editOtherProcedure();
 				} else if (event.getClickCount() == 2 && selected instanceof Procedure) {
-					Main.mainController.menuPaneController.createProcessInfoWindow();
+					Main.mainController.menuPaneController.createProcessInfoWindow().getProcessInfo();
 				}
 			}
 		});
@@ -141,7 +141,7 @@ public class ContentPaneController implements Initializable {
 		Lathe editedProcedure;
 		editedProcedure = (Lathe) selected;
 		LatheAddPaneController latheAddPaneContr = main.menuPaneController.createLatheWindow();
-		// kopiowanie pól starego zabiegu do okna edytowania
+		//copying fields of old procedure to edit window 
 		latheAddPaneContr.additionalTime.setText(String.valueOf(editedProcedure.getAdditionalTime()));
 		latheAddPaneContr.diameterAfterLathe.setText(String.valueOf(editedProcedure.getDiameterAfter()));
 		latheAddPaneContr.diameterBeforeLathe.setText(String.valueOf(editedProcedure.getDiameterBefore()));
@@ -153,9 +153,8 @@ public class ContentPaneController implements Initializable {
 		latheAddPaneContr.latheMachine.setText(String.valueOf(editedProcedure.getMachine()));
 		latheAddPaneContr.latheRpm.setText(String.valueOf(editedProcedure.getRpm()));
 		latheAddPaneContr.latheType.setValue(String.valueOf(editedProcedure.getType()));
-
-		// po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce
-		// nowego w kolekcji
+	
+		//after clicking 'add' deleting old object and adding new one in the same place in collection
 		latheAddPaneContr.addProcedure.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -180,7 +179,7 @@ public class ContentPaneController implements Initializable {
 		Drill editedProcedure;
 		editedProcedure = (Drill) selected;
 		DrillAddPaneController drillAddPaneContr = main.menuPaneController.createDrillWindow();
-		// kopiowanie pól starego zabiegu do okna edytowania
+		//copying fields of old procedure to edit window
 		drillAddPaneContr.drillDiameter.setText(String.valueOf(editedProcedure.getDiameterAfter()));
 		drillAddPaneContr.drillLength.setText(String.valueOf(editedProcedure.getDrillLength()));
 		drillAddPaneContr.drillFeed.setText(String.valueOf(editedProcedure.getFeed()));
@@ -191,8 +190,7 @@ public class ContentPaneController implements Initializable {
 		drillAddPaneContr.drillMachine.setText(String.valueOf(editedProcedure.getMachine()));
 		drillAddPaneContr.additionalTimeDrill.setText(String.valueOf(editedProcedure.getAdditionalTime()));
 
-		// po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce
-		// nowego w kolekcji
+		//after clicking 'add' deleting old object and adding new one in the same place in collection
 		drillAddPaneContr.addDrillProcedure.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -217,7 +215,7 @@ public class ContentPaneController implements Initializable {
 		Grind editedProcedure;
 		editedProcedure = (Grind) selected;
 		GrindAddPaneController grindAddPaneContr = main.menuPaneController.createGrindWindow();
-		// kopiowanie pól starego zabiegu do okna edytowania
+		//copying fields of old procedure to edit window
 		grindAddPaneContr.grindRpm.setText(String.valueOf(editedProcedure.getRpm()));
 		grindAddPaneContr.grindFeed.setText(String.valueOf(editedProcedure.getFeed()));
 		grindAddPaneContr.grindLength.setText(String.valueOf(editedProcedure.getGrindLength()));
@@ -229,8 +227,7 @@ public class ContentPaneController implements Initializable {
 		grindAddPaneContr.additionalTimeGrind.setText(String.valueOf(editedProcedure.getAdditionalTime()));
 		grindAddPaneContr.grindSurplus.setText(String.valueOf(editedProcedure.getSurplus()));
 
-		// po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce
-		// nowego w kolekcji
+		//after clicking 'add' deleting old object and adding new one in the same place in collection
 		grindAddPaneContr.addGrindProcedure.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -255,7 +252,7 @@ public class ContentPaneController implements Initializable {
 		Other editedProcedure;
 		editedProcedure = (Other) selected;
 		OtherAddPaneController otherAddPaneContr = main.menuPaneController.createOtherWindow();
-		// kopiowanie pól starego zabiegu do okna edytowania
+		//copying fields of old procedure to edit window
 		otherAddPaneContr.otherCost.setText(String.valueOf(editedProcedure.getCostPerHour()));
 		otherAddPaneContr.otherType.setText(String.valueOf(editedProcedure.getType()));
 		otherAddPaneContr.otherMachine.setText(String.valueOf(editedProcedure.getMachine()));
@@ -263,8 +260,7 @@ public class ContentPaneController implements Initializable {
 		otherAddPaneContr.otherTime.setText(String.valueOf(editedProcedure.getMainTime()));
 		otherAddPaneContr.otherParametersArea.setText(String.valueOf(editedProcedure.getOtherParameters()));
 
-		// po kliknieciu 'dodaj' usuwanie starego obiektu i dodanie w jego miejsce
-		// nowego w kolekcji
+		//after clicking 'add' deleting old object and adding new one in the same place in collection
 		otherAddPaneContr.addOtherProcedure.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

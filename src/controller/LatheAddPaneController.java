@@ -61,12 +61,12 @@ public class LatheAddPaneController implements Initializable {
 		latheType.setOnAction(x -> loadLatheType());
 	}
 
-	private void loadLatheType() {
+	private void loadLatheType() {   //loading suitable hints and fields depending on the selected procedure type
 		try {
 			helpImageLathe.setFitWidth(500);
 			helpImageLathe.setFitHeight(450);
 			
-		if(latheType.getValue() == TRANSVE_LATHE) {				//jeœli wybierzemy toczenie poprzeczne to zmien obraz i ukryj sredn koncowa
+		if(latheType.getValue() == TRANSVE_LATHE) {		
 				diameterAfterLathe.setVisible(false);
 				diamAfterLatheLabel.setVisible(false);
 				helpImageLathe.setImage(new Image("/res/toczeniePoprzeczne.PNG"));

@@ -11,13 +11,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class ProcessInfo {
-	private StringProperty operatorName;		//imie i nazwisko operatora, osoby dodaj¹cej zabieg
-	private StringProperty partName;			//nazwa wykonywanego detalu/czêœci
-	private StringProperty date;				//data dodania procesu
-	private StringProperty halfProduct;			//pó³fabrykat
-	private DoubleProperty halfProductCost; 	//koszt pó³fabrykatu
-	private IntegerProperty partQuantity;		//liczba sztuk do wykonania w serii
-	private double preparingTime;				//czas przygotowawczo zakoñczeniowy + czas uzupe³niajacy
+	private StringProperty operatorName;		// name and surname of operator / procedure adding person 
+	private StringProperty partName;			//name of performed part
+	private StringProperty date;				//date of addition process
+	private StringProperty halfProduct;			//half product name
+	private DoubleProperty halfProductCost; 	//half product cost
+	private IntegerProperty partQuantity;		//number of part to perform in one series
+	private double preparingTime;				//preparing time + complementary time / czas przygotowawczo zakoñczeniowy + czas uzupe³niajacy
 	
 	public ProcessInfo(String operatorName, String partName, String halfProduct,Double halfProductCost,
 			Integer partQuantity, double preparingTime) {

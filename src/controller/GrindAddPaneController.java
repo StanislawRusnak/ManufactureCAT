@@ -63,12 +63,12 @@ public class GrindAddPaneController implements Initializable {
 		addGrindProcedure.setOnAction(x -> configureGrindAdd());
 	}
 
-	private void loadGrindType() {
+	private void loadGrindType() {     //loading suitable hints and fields depending on the selected procedure type
 		try {
 			helpImageGrind.setFitWidth(500);
 			helpImageGrind.setFitHeight(400);
 			
-		if(grindType.getValue() == LONGIT_GRIND) {				//jeœli wybierzemy szlifowanie wzd³u¿ne to zmien obraz i ukryj niepotrzebne pola
+		if(grindType.getValue() == LONGIT_GRIND) {
 				grindSurplus.setVisible(false);
 				surplusLabel.setVisible(false);
 				

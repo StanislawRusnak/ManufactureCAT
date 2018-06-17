@@ -6,16 +6,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Procedure {
-	//=====pola g³ówne wykorzystywane w tabeli TableView
-	private StringProperty type; 	//typ zabiegu (np toczenie zgrubne)
-	private StringProperty parameters;  //parametry zabiegu
-	private StringProperty machine;  //rodzaj obrabiarki
-	private DoubleProperty time;		//czas trwania zabiegu
-	private DoubleProperty cost;		//koszt wykonania zabiegu
+	//===== main fields used in TableView table 
+	private StringProperty type; 	//type of procedure (np toczenie wzd³u¿ne)
+	private StringProperty parameters;  //procedure parameters
+	private StringProperty machine;     //machine type
+	private DoubleProperty time;		//procedure lasting time
+	private DoubleProperty cost;		//cost of procedure performing
 	
 	
-	//=====pola pomocnicze konieczne do obliczenia wartoœci pól g³ownych
-	private double additionalTime;		//czas pomocniczy (np. dosuniêcie narzêdzia, wymiana narz itp)
+	//=====additional fields necessary to calculating main fields values
+	private double additionalTime;		//additional time (np. dosuniêcie narzêdzia, wymiana narz itp)
 	
 	public Procedure() {
 		this.type = new SimpleStringProperty();
@@ -78,7 +78,7 @@ public class Procedure {
         return time.get();
     }
  
-    public void setTime(Double time) {		//zaokr¹glanie w GÓRÊ do jednej setnej minuty
+    public void setTime(Double time) {		// rounding UP to one hundreth of minute / zaokr¹glanie w GÓRÊ do jednej setnej minuty
     	time*=100;
     	time = Math.ceil(time);
     	time/=100;
@@ -93,7 +93,7 @@ public class Procedure {
         return cost.get();
     }
  
-    public void setCost(Double cost) {	//zaokr¹glanie w GÓRÊ do jednego grosza
+    public void setCost(Double cost) {	// rounding UP to one grosh / zaokr¹glanie w GÓRÊ do jednego grosza
     	cost*=100;
     	cost= Math.ceil(cost);
     	cost/=100;

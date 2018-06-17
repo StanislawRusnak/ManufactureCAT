@@ -59,7 +59,7 @@ public class DrillAddPaneController implements Initializable {
 			helpImageDrill.setFitWidth(410);
 			helpImageDrill.setFitHeight(400);
 
-			if (drillType.getValue() == CLOSE_DRILLING) { // zmiana obrazow podpowiedzi w zaleznosci od typu zabiegu
+			if (drillType.getValue() == CLOSE_DRILLING) { //change hint images depending on the type of procedure
 				helpImageDrill.setImage(new Image("/res/wiercenieNieprzel.PNG"));
 			} else if (drillType.getValue() == OPEN_DRILLING) {
 				helpImageDrill.setImage(new Image("/res/wierceniePrzel.PNG"));
