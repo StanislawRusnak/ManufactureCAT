@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style.css"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.MainController">
+	<top>
+		<VBox spacing="10.0" BorderPane.alignment="CENTER">
+			<children>
+				<fx:include fx:id="menuPane" source="MenuPane.fxml" />
+				<fx:include fx:id="controlPane" source="ControlPane.fxml" />
+			</children>
+		</VBox>
+	</top>
+	<center>
+		<VBox fx:id="allWindow" spacing="5.0" BorderPane.alignment="CENTER">
+			<children>
+				<HBox prefHeight="170.0" prefWidth="1200.0" spacing="50.0">
+					<children>
+						<VBox prefHeight="170.0" prefWidth="354.0">
+							<children>
+								<Label alignment="CENTER" maxWidth="1.7976931348623157E308"
+									prefHeight="30.0" prefWidth="257.0" text="Podstawowe informacje :"
+									VBox.vgrow="NEVER">
+									<font>
+										<Font name="System Bold Italic" size="20.0" />
+									</font>
+								</Label>
+								<TextArea fx:id="processInfoField" editable="false"
+									maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+									prefHeight="126.0" prefWidth="354.0"
+									text="Nazwa części:&#10;Seria:&#10;Utworzony przez:&#10;Data dodania:&#10;Czas przygotowawczo-zakończeniowy:" />
+							</children>
+						</VBox>
+						<GridPane alignment="CENTER" hgap="20.0" prefHeight="130.0"
+							prefWidth="680.0">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="1.7976931348623157E308" minWidth="89.99998779296877" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="1.7976931348623157E308" minWidth="0.0" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="1.7976931348623157E308" minWidth="20.80000000000001" />
+								<ColumnConstraints hgrow="SOMETIMES"
+									maxWidth="1.7976931348623157E308" minWidth="10.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints maxHeight="114.0" minHeight="10.0"
+									prefHeight="71.00001220703125" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="56.000009155273446"
+									minHeight="0.0" prefHeight="42.99998779296875" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+									text="Czas sumaryczny 1szt. [min]:" textAlignment="CENTER"
+									wrapText="true" GridPane.halignment="CENTER"
+									GridPane.valignment="CENTER">
+									<font>
+										<Font name="System Bold Italic" size="18.0" />
+									</font>
+								</Label>
+								<Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+									text="Koszt sumaryczny 1 szt. [zł]:" textAlignment="CENTER"
+									wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+									GridPane.valignment="CENTER">
+									<font>
+										<Font name="System Bold Italic" size="18.0" />
+									</font>
+									<opaqueInsets>
+										<Insets />
+									</opaqueInsets>
+									<GridPane.margin>
+										<Insets />
+									</GridPane.margin>
+								</Label>
+								<TextField fx:id="timeSumField" alignment="CENTER"
+									editable="false" maxWidth="-Infinity" prefHeight="25.0"
+									prefWidth="80.0" GridPane.halignment="CENTER"
+									GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+								<TextField fx:id="costSumField" alignment="CENTER"
+									editable="false" maxWidth="-Infinity" prefHeight="25.0"
+									prefWidth="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+									GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+								<Label layoutX="228.0" layoutY="24.0" maxHeight="1.7976931348623157E308"
+									maxWidth="1.7976931348623157E308" text="Koszt wykonania serii [zł]:"
+									textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3"
+									GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+									<font>
+										<Font name="System Bold Italic" size="18.0" />
+									</font>
+									<GridPane.margin>
+										<Insets />
+									</GridPane.margin>
+								</Label>
+								<TextField fx:id="seriesCostField" alignment="CENTER"
+									editable="false" maxWidth="-Infinity" prefHeight="25.0"
+									prefWidth="80.0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+									GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+								<Label layoutX="168.0" layoutY="10.0" maxHeight="1.7976931348623157E308"
+									maxWidth="1.7976931348623157E308" text="Czas wykonania serii [min]:"
+									textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2"
+									GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+									<font>
+										<Font name="System Bold Italic" size="18.0" />
+									</font>
+								</Label>
+								<TextField fx:id="seriesTimeField" alignment="CENTER"
+									editable="false" layoutX="171.0" layoutY="102.0" maxWidth="-Infinity"
+									prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="2"
+									GridPane.halignment="CENTER" GridPane.rowIndex="1"
+									GridPane.valignment="CENTER" />
+							</children>
+							<HBox.margin>
+								<Insets bottom="20.0" top="20.0" />
+							</HBox.margin>
+						</GridPane>
+					</children>
+					<VBox.margin>
+						<Insets />
+					</VBox.margin>
+					<padding>
+						<Insets left="50.0" />
+					</padding>
+				</HBox>
+				<fx:include fx:id="contentPane" maxHeight="1.7976931348623157E308"
+					source="ContentPane.fxml" VBox.vgrow="ALWAYS" />
+			</children>
+			<BorderPane.margin>
+				<Insets top="10.0" />
+			</BorderPane.margin>
+		</VBox>
+	</center>
+</BorderPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<TextArea editable="false" prefHeight="343.0" prefWidth="463.0"
+			text="Program Manufacture Cost and Time &#10;(Manufacture CAT)&#10;&#10;Wersja v1.0&#10;&#10;Wykonany jako praca&#10;dyplomowa przez&#10;Stanisława Rusnak&#10;© Copyright&#10;">
+			<font>
+				<Font name="System Italic" size="22.0" />
+			</font>
+			<opaqueInsets>
+				<Insets />
+			</opaqueInsets>
+		</TextArea>
+		<ImageView fitHeight="186.0" fitWidth="199.0" layoutX="255.0"
+			layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../res/logo.jpg" />
+			</image>
+		</ImageView>
+	</children>
+	<opaqueInsets>
+		<Insets />
+	</opaqueInsets>
+</AnchorPane>
